@@ -29,7 +29,7 @@ fun ActionButton(ButtonText: String, ButtonColor: Color,) {
         enabled = true,
         colors = ButtonColors(
             containerColor = ButtonColor,
-            contentColor = MaterialTheme.colorScheme.onBackground,
+            contentColor = Color.White,
             disabledContainerColor = Color.Gray, //TODO: Look into this later
             disabledContentColor = Color.LightGray
         ),
