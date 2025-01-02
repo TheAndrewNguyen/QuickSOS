@@ -18,7 +18,7 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TitleContentNavScaffold(title: String, content: @Composable () -> Unit) {
+fun TitleContentNavScaffold(title: String, titleAlignment: TextAlign = TextAlign.Center, content: @Composable () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -30,7 +30,7 @@ fun TitleContentNavScaffold(title: String, content: @Composable () -> Unit) {
                    Text(
                        text = title,
                        style = MaterialTheme.typography.headlineMedium,
-                       textAlign = TextAlign.Center,
+                       textAlign = titleAlignment,
                        modifier = Modifier.fillMaxWidth()
                    )
                 }
