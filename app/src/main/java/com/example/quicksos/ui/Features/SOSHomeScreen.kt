@@ -1,16 +1,12 @@
 package com.example.quicksos.ui.Features
 
-import android.R.attr.enabled
-import android.R.attr.text
-import android.util.Log
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ButtonDefaults.buttonColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,7 +19,7 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 
 
 @Composable
-fun ActionButton(ButtonText: String, ButtonColor: Color,) {
+fun ActionButton(modifier: Modifier = Modifier, ButtonText: String, ButtonColor: Color,) {
     Button(
         onClick = { /*TODO*/ },
         enabled = true,
@@ -33,8 +29,8 @@ fun ActionButton(ButtonText: String, ButtonColor: Color,) {
             disabledContainerColor = Color.Gray, //TODO: Look into this later
             disabledContentColor = Color.LightGray
         ),
-        modifier = Modifier
-            .size(372.dp, 187.dp)
+        modifier = modifier
+            .fillMaxWidth()
             .padding(18.dp)
     ) {
         Text(
@@ -42,6 +38,7 @@ fun ActionButton(ButtonText: String, ButtonColor: Color,) {
             style = MaterialTheme.typography.displaySmall)
     }
 }
+
 
 data class ActionButtonData(val ButtonText: String, val ButtonColor: Color)
 
@@ -59,7 +56,7 @@ fun ActionButtonColumn(){
             .fillMaxSize()
     ) {
         ActionButtonsValues.forEach {
-            ActionButton(ButtonText = it.ButtonText, ButtonColor = it.ButtonColor)
+            ActionButton(Modifier.weight(1f), ButtonText = it.ButtonText, ButtonColor = it.ButtonColor)
         }
     }
 }

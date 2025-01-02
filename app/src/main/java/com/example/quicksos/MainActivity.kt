@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.quicksos.ui.Features.SOSHomeScreen
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,8 +21,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            QuickSOSTheme {
-                /*TODO*/
+            QuickSOSTheme(dynamicColor = false) {
+                SOSHomeScreen()
             }
         }
     }
