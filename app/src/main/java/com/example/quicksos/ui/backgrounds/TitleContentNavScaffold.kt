@@ -1,5 +1,7 @@
 package com.example.quicksos.ui.backgrounds
 
+import android.R.attr.contentDescription
+import android.R.attr.onClick
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -31,6 +33,18 @@ fun Title(title: String, titleAlignment: TextAlign = TextAlign.Center) {
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TopAppBar(title: @Composable ()-> Unit) {
+    TopAppBar(
+        colors = topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.background,
+            titleContentColor = MaterialTheme.colorScheme.onBackground,
+        ),
+        title = { title() }
+    )
+}
+
 @Composable
 fun FloatingActionButton(icon: ImageVector, onClick: () -> Unit = {}, contentDescription: String) {
     FloatingActionButton(onClick = onClick) {
@@ -40,19 +54,11 @@ fun FloatingActionButton(icon: ImageVector, onClick: () -> Unit = {}, contentDes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TitleContentNavScaffold(title: @Composable ()-> Unit, content: @Composable () -> Unit, floatingActionButton: @Composable () -> Unit = {}) {
+fun TitleContentNavScaffold(topBar: @Composable ()-> Unit, content: @Composable () -> Unit, floatingActionButton: @Composable () -> Unit = {}) {
     Scaffold(
-        topBar = {
-            TopAppBar(
-                colors = topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.background,
-                    titleContentColor = MaterialTheme.colorScheme.onBackground,
-                ),
-                title = { title() }
-            )
-        },
+        topBar = { topBar() },
         bottomBar = { NavBar(Modifier.fillMaxWidth()) },
-        floatingActionButton = floatingActionButton,
+        floatingActionButton = { floatingActionButton() },
     ) { innerPadding ->
         Column(
             modifier = Modifier //pass modifier from parent
@@ -64,11 +70,29 @@ fun TitleContentNavScaffold(title: @Composable ()-> Unit, content: @Composable (
 }
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
 @Composable
 fun TitleNavTemplatePreview() {
-    QuickSOSTheme {
-        TitleContentNavScaffold(title = { Title("Quick SOS") }, content = { Text("Content") }, floatingActionButton = { FloatingActionButton(icon = Icons.Default.Add, contentDescription = "Add") })
+    val title: @Composable () -> Unit = {
+        Title(title = "Quick SOS")
+    }
+    val topBar: @Composable () -> Unit = {
+        TopAppBar(title = title)
+    }
+    val floatingActionButton: @Composable () -> Unit = {
+        FloatingActionButton(
+            icon = Icons.Filled.Add,
+            contentDescription = "Add"
+        )
+    }
+
+    QuickSOSTheme(dynamicColor = false) {
+        TitleContentNavScaffold(
+            topBar = { topBar() },
+            content = { Text("Content TESTing") },
+            floatingActionButton = { floatingActionButton() }
+        )
     }
 }
 
