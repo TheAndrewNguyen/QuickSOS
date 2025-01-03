@@ -19,31 +19,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.quicksos.ui.components.NavBar
+import com.example.quicksos.ui.components.TopAppBarTitle
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
-@Composable
-fun TopAppBarTitle(title: String = "", titleAlignment: TextAlign = TextAlign.Center) {
-    if(title != "") {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.headlineMedium,
-            textAlign = titleAlignment,
-            modifier = Modifier.fillMaxWidth()
-        )
-    }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TopAppBar(title: @Composable ()-> Unit) {
-    TopAppBar(
-        colors = topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.background,
-            titleContentColor = MaterialTheme.colorScheme.onBackground,
-        ),
-        title = { title() }
-    )
-}
 
 @Composable
 fun FloatingActionButton(icon: ImageVector, onClick: () -> Unit = {}, contentDescription: String) {
