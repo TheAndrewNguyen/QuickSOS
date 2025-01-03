@@ -16,9 +16,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.quicksos.ui.Features.NavBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
+@Composable
+fun Title(title: String, titleAlignment: TextAlign = TextAlign.Center) {
+    Text(
+        text = title,
+        style = MaterialTheme.typography.headlineMedium,
+        textAlign = titleAlignment,
+        modifier = Modifier.fillMaxWidth()
+    )
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TitleContentNavScaffold(title: String, titleAlignment: TextAlign = TextAlign.Center, content: @Composable () -> Unit) {
+fun TitleContentNavScaffold(title: @Composable ()-> Unit, content: @Composable () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -26,14 +36,7 @@ fun TitleContentNavScaffold(title: String, titleAlignment: TextAlign = TextAlign
                     containerColor = MaterialTheme.colorScheme.background,
                     titleContentColor = MaterialTheme.colorScheme.onBackground,
                 ),
-                title = {
-                   Text(
-                       text = title,
-                       style = MaterialTheme.typography.headlineMedium,
-                       textAlign = titleAlignment,
-                       modifier = Modifier.fillMaxWidth()
-                   )
-                }
+                title = { title() }
             )
         },
         bottomBar = { NavBar(Modifier.fillMaxWidth()) }
@@ -52,7 +55,7 @@ fun TitleContentNavScaffold(title: String, titleAlignment: TextAlign = TextAlign
 @Composable
 fun TitleNavTemplatePreview() {
     QuickSOSTheme {
-        TitleContentNavScaffold(title = "QuickSOS", content = { Text("Content") })
+        TitleContentNavScaffold(title = { Title("Quick SOS") }, content = { Text("Content") })
     }
 }
 

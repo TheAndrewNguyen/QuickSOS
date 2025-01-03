@@ -1,6 +1,8 @@
 package com.example.quicksos.ui.Features
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -12,47 +14,91 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
-fun ActionButton(modifier: Modifier = Modifier, ButtonText: String, ButtonColor: Color,) {
-    Button(
-        onClick = { /*TODO*/ },
-        enabled = true,
-        colors = ButtonColors(
-            containerColor = ButtonColor,
-            contentColor = Color.White,
-            disabledContainerColor = Color.Gray, //TODO: Look into this later
-            disabledContentColor = Color.LightGray
-        ),
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(18.dp)
+fun ButtonText(title: String, description: String = "") {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize()
     ) {
         Text(
-            text = ButtonText,
-            style = MaterialTheme.typography.displaySmall)
+            text = title,
+            style = MaterialTheme.typography.displaySmall
+        )
+        if(description != "") {
+            Text(
+                text = description,
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
     }
 }
 
 
-data class ActionButtonData(val ButtonText: String, val ButtonColor: Color)
+@Composable
+fun ActionButton(modifier: Modifier = Modifier, buttonColor: Color, buttonText: @Composable () -> Unit) {
+    Button(
+        onClick = { /*TODO*/ },
+        enabled = true,
+        colors = ButtonColors(
+            containerColor = buttonColor,
+            contentColor = Color.White,
+            disabledContainerColor = Color.Gray, //TODO: Look into this later
+            disabledContentColor = Color.LightGray
+        ),
+        contentPadding = PaddingValues(1.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(18.dp)
+    ) {
+        buttonText()
+    }
+}
+
+
+data class ActionButtonData(val color: Color, val text: @Composable () -> Unit)
 
 @Composable
-fun ActionButtonColumn(){
-    val ActionButtonsValues = listOf(
-        ActionButtonData("Call 911", MaterialTheme.colorScheme.primary),
-        ActionButtonData("Text 911", MaterialTheme.colorScheme.secondary),
-        ActionButtonData("SOS", MaterialTheme.colorScheme.tertiary)
+fun ActionButtonColumn() {
+
+    val actionButtonDataList = listOf(
+        ActionButtonData(
+            color = MaterialTheme.colorScheme.primary,
+            text = { ButtonText("Call 911", "Call emergency services") }
+        ),
+        ActionButtonData(
+            color = MaterialTheme.colorScheme.secondary,
+            text = { ButtonText("Text 911", "Text emergency services") }
+        ),
+        ActionButtonData(
+            color = MaterialTheme.colorScheme.tertiary,
+            text = { ButtonText("Send SOS", "Alert friends and family with your location") }
+        )
     )
 
-    Column (
+    Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
     ) {
-        ActionButtonsValues.forEach {
-            ActionButton(Modifier.weight(1f), ButtonText = it.ButtonText, ButtonColor = it.ButtonColor)
+        actionButtonDataList.forEach { it->
+            ActionButton(
+                Modifier.weight(1f),
+                buttonColor = it.color,
+                buttonText = it.text
+            )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ActionButtonColumnPreview() {
+    QuickSOSTheme(dynamicColor = false){
+        ActionButtonColumn()
     }
 }
