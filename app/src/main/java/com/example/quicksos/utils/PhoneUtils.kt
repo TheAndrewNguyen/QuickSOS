@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
-import android.util.Log.e
 
 //function to call a number
 fun callNumber(context: Context, number: String) {
