@@ -19,14 +19,13 @@ fun SOSHomeScreen() {
     val topBar: @Composable () -> Unit = {
         TopAppBar(title = title)
     }
-    val textAlignment = TextAlign.Center
     val actionButtonColumn : @Composable () -> Unit = {
         ActionButtonColumn()
     }
 
     TitleContentNavScaffold(
-        topBar = { topBar },
-        content = { actionButtonColumn },
+        topBar = { topBar() },
+        content = { actionButtonColumn() },
     )
 }
 
