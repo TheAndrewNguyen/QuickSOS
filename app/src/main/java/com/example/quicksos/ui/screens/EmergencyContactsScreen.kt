@@ -5,8 +5,8 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.quicksos.ui.backgrounds.FloatingActionButton
 import com.example.quicksos.ui.backgrounds.TitleContentNavScaffold
+import com.example.quicksos.ui.components.CustomFloatingActionButton
 import com.example.quicksos.ui.components.TopAppBar
 import com.example.quicksos.ui.components.TopAppBarTitle
 import com.example.quicksos.ui.theme.QuickSOSTheme
@@ -24,7 +24,7 @@ fun EmergencyContactScreen() {
     }
     
     val floatingActionButton: @Composable () -> Unit = {
-        FloatingActionButton(
+        CustomFloatingActionButton(
             icon = Icons.Filled.Add,
             onClick = { /*TODO*/},
             contentDescription = "Add Emergency Contact"
