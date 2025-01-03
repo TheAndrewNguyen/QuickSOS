@@ -3,7 +3,11 @@ package com.example.quicksos.ui.backgrounds
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -26,9 +30,16 @@ fun Title(title: String, titleAlignment: TextAlign = TextAlign.Center) {
     )
 }
 
+@Composable
+fun FloatingActionButton() {
+    FloatingActionButton(onClick = { /*TODO*/ }) {
+        Icon(Icons.Filled.Add, "Add")
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TitleContentNavScaffold(title: @Composable ()-> Unit, content: @Composable () -> Unit) {
+fun TitleContentNavScaffold(title: @Composable ()-> Unit, content: @Composable () -> Unit, floatingActionButton: @Composable () -> Unit = {}) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -39,7 +50,8 @@ fun TitleContentNavScaffold(title: @Composable ()-> Unit, content: @Composable (
                 title = { title() }
             )
         },
-        bottomBar = { NavBar(Modifier.fillMaxWidth()) }
+        bottomBar = { NavBar(Modifier.fillMaxWidth()) },
+        floatingActionButton = floatingActionButton,
     ) { innerPadding ->
         Column(
             modifier = Modifier //pass modifier from parent
