@@ -11,7 +11,16 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
 fun SOSHomeScreen() {
-    TitleContentNavScaffold(title = { Title("Quick SOS", titleAlignment = TextAlign.Center) }, content = { ActionButtonColumn()})
+    val title = "Quick SOS"
+    val textAlignment = TextAlign.Center
+    val actionButtonColumn : @Composable () -> Unit = {
+        ActionButtonColumn()
+    }
+
+    TitleContentNavScaffold(
+        title = { Title(title, textAlignment) },
+        content = { actionButtonColumn },
+    )
 }
 
 

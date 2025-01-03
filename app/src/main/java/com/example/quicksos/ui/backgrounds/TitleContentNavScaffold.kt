@@ -15,6 +15,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.quicksos.ui.components.NavBar
@@ -31,9 +32,9 @@ fun Title(title: String, titleAlignment: TextAlign = TextAlign.Center) {
 }
 
 @Composable
-fun FloatingActionButton() {
-    FloatingActionButton(onClick = { /*TODO*/ }) {
-        Icon(Icons.Filled.Add, "Add")
+fun FloatingActionButton(icon: ImageVector, onClick: () -> Unit = {}, contentDescription: String) {
+    FloatingActionButton(onClick = onClick) {
+        Icon(icon, contentDescription)
     }
 }
 
@@ -67,7 +68,7 @@ fun TitleContentNavScaffold(title: @Composable ()-> Unit, content: @Composable (
 @Composable
 fun TitleNavTemplatePreview() {
     QuickSOSTheme {
-        TitleContentNavScaffold(title = { Title("Quick SOS") }, content = { Text("Content") })
+        TitleContentNavScaffold(title = { Title("Quick SOS") }, content = { Text("Content") }, floatingActionButton = { FloatingActionButton(icon = Icons.Default.Add, contentDescription = "Add") })
     }
 }
 
