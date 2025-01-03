@@ -1,7 +1,5 @@
 package com.example.quicksos.ui.backgrounds
 
-import android.R.attr.contentDescription
-import android.R.attr.onClick
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -24,13 +22,15 @@ import com.example.quicksos.ui.components.NavBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
-fun Title(title: String, titleAlignment: TextAlign = TextAlign.Center) {
-    Text(
-        text = title,
-        style = MaterialTheme.typography.headlineMedium,
-        textAlign = titleAlignment,
-        modifier = Modifier.fillMaxWidth()
-    )
+fun TopAppBarTitle(title: String = "", titleAlignment: TextAlign = TextAlign.Center) {
+    if(title != "") {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.headlineMedium,
+            textAlign = titleAlignment,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -75,7 +75,7 @@ fun TitleContentNavScaffold(topBar: @Composable ()-> Unit, content: @Composable 
 @Composable
 fun TitleNavTemplatePreview() {
     val title: @Composable () -> Unit = {
-        Title(title = "Quick SOS")
+        TopAppBarTitle(title = "Quick SOS")
     }
     val topBar: @Composable () -> Unit = {
         TopAppBar(title = title)
