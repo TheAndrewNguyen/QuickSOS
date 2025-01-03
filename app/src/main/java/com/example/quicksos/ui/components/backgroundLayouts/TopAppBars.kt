@@ -24,7 +24,7 @@ fun TopAppBarTitle(title: String = "", titleAlignment: TextAlign = TextAlign.Cen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBar(title: @Composable ()-> Unit) {
+fun CustomTopAppBar(title: @Composable ()-> Unit) {
     TopAppBar(
         colors = topAppBarColors(
             containerColor = MaterialTheme.colorScheme.background,

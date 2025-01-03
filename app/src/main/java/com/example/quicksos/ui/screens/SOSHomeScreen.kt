@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.quicksos.ui.backgrounds.TitleContentNavScaffold
 import com.example.quicksos.ui.components.sosHome.ActionButtonColumn
-import com.example.quicksos.ui.components.backgroundLayouts.TopAppBar
+import com.example.quicksos.ui.components.backgroundLayouts.CustomTopAppBar
 import com.example.quicksos.ui.components.backgroundLayouts.TopAppBarTitle
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
@@ -14,7 +14,7 @@ fun SOSHomeScreen() {
         TopAppBarTitle(title = "Quick SOS")
     }
     val topBar: @Composable () -> Unit = {
-        TopAppBar(title = title)
+        CustomTopAppBar(title = title)
     }
     val actionButtonColumn : @Composable () -> Unit = {
         ActionButtonColumn()
