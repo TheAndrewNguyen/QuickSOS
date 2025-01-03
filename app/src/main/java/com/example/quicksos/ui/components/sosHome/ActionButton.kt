@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.components
+package com.example.quicksos.ui.components.sosHome
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

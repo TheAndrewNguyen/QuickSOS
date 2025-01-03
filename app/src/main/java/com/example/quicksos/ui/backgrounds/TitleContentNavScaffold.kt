@@ -12,10 +12,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.quicksos.ui.components.NavBar
-import com.example.quicksos.ui.components.TopAppBarTitle
+import com.example.quicksos.ui.components.backgroundLayouts.NavBar
+import com.example.quicksos.ui.components.backgroundLayouts.TopAppBarTitle
 import com.example.quicksos.ui.theme.QuickSOSTheme
-import com.example.quicksos.ui.components.CustomFloatingActionButton
+import com.example.quicksos.ui.components.backgroundLayouts.CustomFloatingActionButton
 
 
 @OptIn(ExperimentalMaterial3Api::class)

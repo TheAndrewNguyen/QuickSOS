@@ -1,7 +1,5 @@
-package com.example.quicksos.ui.components
+package com.example.quicksos.ui.components.sosHome
 
-import android.R.attr.action
-import android.R.id.message
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
