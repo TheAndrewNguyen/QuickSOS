@@ -38,9 +38,9 @@ fun ButtonText(title: String, description: String = "") {
 
 
 @Composable
-fun ActionButton(modifier: Modifier = Modifier, buttonColor: Color, buttonText: @Composable () -> Unit) {
+fun ActionButton(modifier: Modifier = Modifier, buttonColor: Color, buttonText: @Composable () -> Unit, buttonAction: () -> Unit = {}) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = { buttonAction() },
         enabled = true,
         colors = ButtonColors(
             containerColor = buttonColor,
