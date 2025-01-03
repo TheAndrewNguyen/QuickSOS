@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.Features
+package com.example.quicksos.ui.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox

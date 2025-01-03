@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.quicksos.ui.Screens.SOSHomeScreen
+import com.example.quicksos.ui.screens.SOSHomeScreen
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 class MainActivity : ComponentActivity() {

@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.Backgrounds
+package com.example.quicksos.ui.backgrounds
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.quicksos.ui.Features.NavBar
+import com.example.quicksos.ui.components.NavBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
