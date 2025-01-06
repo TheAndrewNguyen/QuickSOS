@@ -12,15 +12,21 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.quicksos.ui.components.backgroundLayouts.CustomFloatingActionButton
 import com.example.quicksos.ui.components.backgroundLayouts.NavBar
+import com.example.quicksos.ui.components.backgroundLayouts.SearchBar
 import com.example.quicksos.ui.components.backgroundLayouts.TopAppBarTitle
 import com.example.quicksos.ui.theme.QuickSOSTheme
-import com.example.quicksos.ui.components.backgroundLayouts.CustomFloatingActionButton
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TitleContentNavScaffold(topBar: @Composable ()-> Unit, content: @Composable () -> Unit, floatingActionButton: @Composable () -> Unit = {}) {
+fun TitleContentNavScaffold(
+    topBar: @Composable ()-> Unit,
+    content: @Composable () -> Unit,
+    floatingActionButton: @Composable () -> Unit = {})
+{
     Scaffold(
         topBar = { topBar() },
         bottomBar = { NavBar(Modifier.fillMaxWidth()) },
@@ -39,7 +45,7 @@ fun TitleContentNavScaffold(topBar: @Composable ()-> Unit, content: @Composable 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
 @Composable
-fun TitleNavTemplatePreview() {
+fun TitleNavTemplatePreviewText() {
     val title: @Composable () -> Unit = {
         TopAppBarTitle(title = "Quick SOS")
     }
@@ -58,7 +64,30 @@ fun TitleNavTemplatePreview() {
             topBar = { topBar() },
             content = { Text("Content TESTing") },
             floatingActionButton = { floatingActionButton() }
+
         )
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+fun TitleContentNavScaffoldSearchBarPreview() {
+    QuickSOSTheme(dynamicColor = false) {
+        val searchBar: @Composable () -> Unit = {
+            SearchBar(label = "Search emergency contacts")
+        }
+        val topBar: @Composable () -> Unit = {
+            TopAppBar(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 4.dp, end = 16.dp),
+                title = searchBar)
+        }
+
+        TitleContentNavScaffold(
+            topBar = { topBar() },
+            content = { Text("Content TESTing") }
+        )
+    }
+}
