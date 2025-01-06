@@ -12,7 +12,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.quicksos.ui.components.backgroundLayouts.CustomFloatingActionButton
 import com.example.quicksos.ui.components.backgroundLayouts.NavBar
 import com.example.quicksos.ui.components.backgroundLayouts.SearchBar
@@ -69,25 +68,24 @@ fun TitleNavTemplatePreviewText() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
-fun TitleContentNavScaffoldSearchBarPreview() {
-    QuickSOSTheme(dynamicColor = false) {
-        val searchBar: @Composable () -> Unit = {
-            SearchBar(label = "Search emergency contacts")
-        }
-        val topBar: @Composable () -> Unit = {
-            TopAppBar(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 4.dp, end = 16.dp),
-                title = searchBar)
-        }
+fun SearchNavTemplatePreview() {
+    val title: @Composable () -> Unit = {
+        SearchBar(label = "Search Emergency Contacts")
+    }
 
+    val content: @Composable () -> Unit = {
+        Text("Content TESTing")
+    }
+
+    QuickSOSTheme(dynamicColor = false) {
         TitleContentNavScaffold(
-            topBar = { topBar() },
-            content = { Text("Content TESTing") }
+            topBar = { title() },
+            content = { content() }
         )
     }
 }
+
+
