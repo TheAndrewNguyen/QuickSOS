@@ -3,24 +3,18 @@ package com.example.quicksos.ui.screens
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.quicksos.ui.backgrounds.TitleContentNavScaffold
 import com.example.quicksos.ui.components.backgroundLayouts.CustomFloatingActionButton
-import com.example.quicksos.ui.components.backgroundLayouts.CustomTopAppBar
-import com.example.quicksos.ui.components.backgroundLayouts.TopAppBarTitle
+import com.example.quicksos.ui.components.backgroundLayouts.SearchBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
 fun EmergencyContactScreen() {
-    val title: @Composable () -> Unit = {
-        TopAppBarTitle(title = "Emergency Contacts", titleAlignment = TextAlign.Center)
-    }    
     
     val topBar: @Composable () -> Unit = {
-        CustomTopAppBar(
-            title = title
-        )
+        SearchBar(modifier = Modifier, label = "Search Emergency Contacts")
     }
     
     val floatingActionButton: @Composable () -> Unit = {
