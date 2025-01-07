@@ -1,4 +1,7 @@
 package com.example.quicksos.ui.viewModels
 
-class MainViewModel {
+import androidx.lifecycle.ViewModel
+
+class MainViewModel : ViewModel() {
+
 }

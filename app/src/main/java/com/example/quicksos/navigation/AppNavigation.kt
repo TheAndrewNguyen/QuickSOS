@@ -14,9 +14,9 @@ fun AppNavigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Screen.Home.route) {
-        composable("home") { SOSHomeScreen() }
-        composable("emergencyContacts") { EmergencyContactScreen() }
-        composable("location") { LocationScreen() }
-        composable("settings") { SettingScreen() }
+        composable(Screen.Home.route) { SOSHomeScreen() }
+        composable(Screen.EmergencyContacts.route) { EmergencyContactScreen() }
+        composable(Screen.Location.route) { LocationScreen() }
+        composable(Screen.Settings.route) { SettingScreen() }
     }
 }
