@@ -12,9 +12,10 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
 fun ActionButtonColumn() {
-    val context = LocalContext.current
-
     val viewModel: HomeViewModel = viewModel()
+
+    //action button data
+    val context = LocalContext.current
     viewModel.LoadActionData(context)
     val actionButtonDataList = viewModel.actionButtonData.value ?: emptyList()
 
