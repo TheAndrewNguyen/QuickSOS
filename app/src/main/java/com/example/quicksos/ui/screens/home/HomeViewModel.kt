@@ -1,12 +1,14 @@
 package com.example.quicksos.ui.screens.home
 
 import android.content.Context
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.quicksos.ui.theme.SOSBlUE
+import com.example.quicksos.ui.theme.SOSRED
+import com.example.quicksos.ui.theme.SOSYELLOW
 import com.example.quicksos.utils.callNumber
 import com.example.quicksos.utils.textMultipleNumbers
 import com.example.quicksos.utils.textNumber
@@ -19,21 +21,20 @@ class HomeViewModel : ViewModel() {
     private val _actionButtonData = MutableLiveData<List<ActionButtonData>>()
     val actionButtonData: LiveData<List<ActionButtonData>> get() = _actionButtonData
 
-    @Composable
-    fun LoadActionData(context: Context) {
+    fun loadActionData(context: Context) {
         _actionButtonData.value = listOf(
             ActionButtonData(
-                color = MaterialTheme.colorScheme.primary,
+                color = SOSRED,
                 text = { ButtonText("Call 911", "Call emergency services") },
                 action = { callNumber(context = context, number = "911") }
             ),
             ActionButtonData(
-                color = MaterialTheme.colorScheme.secondary,
+                color = SOSBlUE,
                 text = { ButtonText("Text 911", "Text emergency services") },
                 action = { textNumber(context = context, number = "911", message = "I need help") }
             ),
             ActionButtonData(
-                color = MaterialTheme.colorScheme.tertiary,
+                color = SOSYELLOW,
                 text = { ButtonText("Send SOS", "Alert friends and family") },
                 action = {
                     textMultipleNumbers(

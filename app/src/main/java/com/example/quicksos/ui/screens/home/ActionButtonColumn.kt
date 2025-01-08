@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
@@ -14,9 +13,7 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 fun ActionButtonColumn() {
     val viewModel: HomeViewModel = viewModel()
 
-    //action button data
-    val context = LocalContext.current
-    viewModel.LoadActionData(context)
+
     val actionButtonDataList = viewModel.actionButtonData.value ?: emptyList()
 
     Column(
