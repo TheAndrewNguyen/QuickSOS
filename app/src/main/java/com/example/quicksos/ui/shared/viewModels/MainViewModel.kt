@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.viewModels
+package com.example.quicksos.ui.shared.viewModels
 
 import androidx.lifecycle.ViewModel
 

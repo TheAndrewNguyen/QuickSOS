@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.components.sosHome
+package com.example.quicksos.ui.screens.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

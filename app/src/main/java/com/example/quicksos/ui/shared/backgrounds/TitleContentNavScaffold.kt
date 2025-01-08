@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.backgrounds
+package com.example.quicksos.ui.shared.backgrounds
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,10 +12,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.quicksos.ui.components.backgroundLayouts.CustomFloatingActionButton
-import com.example.quicksos.ui.components.backgroundLayouts.NavBar
-import com.example.quicksos.ui.components.backgroundLayouts.SearchBar
-import com.example.quicksos.ui.components.backgroundLayouts.TopAppBarTitle
+import com.example.quicksos.ui.shared.components.CustomFloatingActionButton
+import com.example.quicksos.ui.shared.components.NavBar
+import com.example.quicksos.ui.shared.components.SearchBar
+import com.example.quicksos.ui.shared.components.TopAppBarTitle
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 

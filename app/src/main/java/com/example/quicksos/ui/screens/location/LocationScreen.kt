@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.screens
+package com.example.quicksos.ui.screens.location
 
 import androidx.compose.runtime.Composable
 
