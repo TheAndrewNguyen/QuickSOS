@@ -5,16 +5,18 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.quicksos.navigation.NavigationViewModel
 import com.example.quicksos.ui.shared.backgrounds.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.components.CustomFloatingActionButton
-import com.example.quicksos.ui.shared.components.bottomNavBar.NavBar
 import com.example.quicksos.ui.shared.components.SearchBar
+import com.example.quicksos.ui.shared.components.bottomNavBar.NavBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
-fun EmergencyContactScreen(navController: NavHostController) {
+fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: NavigationViewModel = viewModel()) {
     
     val topBar: @Composable () -> Unit = {
         SearchBar(modifier = Modifier, label = "Search Emergency Contacts")
@@ -33,7 +35,7 @@ fun EmergencyContactScreen(navController: NavHostController) {
     }
 
     val bottomBar: @Composable () -> Unit = {
-        NavBar(navController = navController)
+        NavBar(navController = navController, navBarViewModel = navBarViewModel)
     }
     
     TitleContentNavScaffold(

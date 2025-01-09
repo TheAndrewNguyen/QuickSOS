@@ -1,5 +1,6 @@
 package com.example.quicksos.ui.shared.components.bottomNavBar
 
+import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Home
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.quicksos.navigation.NavigationViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 //items for NavBar
@@ -39,9 +41,12 @@ val unselectedIcons = listOf(
 )
 
 @Composable
-fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
+fun NavBar(modifier: Modifier = Modifier, navController: NavController, navBarViewModel: NavigationViewModel = viewModel()) {
 
-    val viewModel = viewModel<NavBarViewModel>()
+    val viewModel = navBarViewModel
+
+    val selectedIndex = viewModel.selectedNavIndex.value
+    Log.d("NavBar", "Selected Index on compose side: $selectedIndex")
 
     val navActions = listOf(
         { navController.navigate("home") },
@@ -55,7 +60,7 @@ fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
             NavigationBarItem(
                 icon = {
                     Icon(
-                        if (viewModel.selectedNavIndex.value == index) selectedIcons[index] else unselectedIcons[index],
+                        if (selectedIndex == index) selectedIcons[index] else unselectedIcons[index],
                         contentDescription = item
                     )
                 },
@@ -65,21 +70,23 @@ fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
                         textAlign = TextAlign.Center
                     )
                 },
-                selected =  viewModel.selectedNavIndex.value == index,
+                selected = selectedIndex == index,
                 onClick = {
+                    Log.d("NavBar", "Clicked on: $index")
                     navActions[index]()
-                    viewModel.navIndexSet(index)
+                    viewModel.navBarIndexSet(index)
                 }
             )
         }
     }
 }
 
+//for composable
 @Preview(showBackground = true)
 @Composable
 fun NavBarPreview() {
     QuickSOSTheme {
         val navController = NavController(LocalContext.current)
-        NavBar(navController = navController)
+        NavBar(navController = navController, navBarViewModel = viewModel())
     }
 }
