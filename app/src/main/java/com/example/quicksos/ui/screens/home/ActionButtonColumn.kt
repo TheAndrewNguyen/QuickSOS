@@ -12,8 +12,6 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 @Composable
 fun ActionButtonColumn() {
     val viewModel: HomeViewModel = viewModel()
-
-
     val actionButtonDataList = viewModel.actionButtonData
 
     Column(
