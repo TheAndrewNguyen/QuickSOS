@@ -45,7 +45,7 @@ fun NavBar(modifier: Modifier = Modifier, navController: NavController, navBarVi
 
     val viewModel = navBarViewModel
 
-    val selectedIndex = viewModel.selectedNavIndex.value
+    val selectedIndex = viewModel.selectedNavIndex.intValue
     Log.d("NavBar", "Selected Index on compose side: $selectedIndex")
 
     val navActions = listOf(
