@@ -5,13 +5,16 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.quicksos.ui.shared.backgrounds.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.components.CustomFloatingActionButton
+import com.example.quicksos.ui.shared.components.NavBar
 import com.example.quicksos.ui.shared.components.SearchBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
-fun EmergencyContactScreen() {
+fun EmergencyContactScreen(navController: NavHostController) {
     
     val topBar: @Composable () -> Unit = {
         SearchBar(modifier = Modifier, label = "Search Emergency Contacts")
@@ -28,11 +31,16 @@ fun EmergencyContactScreen() {
     val content: @Composable () -> Unit = {
         /*TODO*/
     }
+
+    val bottomBar: @Composable () -> Unit = {
+        NavBar(navController = navController)
+    }
     
     TitleContentNavScaffold(
         topBar = { topBar() },
         floatingActionButton = { floatingActionButton() },
-        content = { content() }
+        content = { content() },
+        bottomBar = { bottomBar() }
     )
 }
 
@@ -41,6 +49,7 @@ fun EmergencyContactScreen() {
 @Composable
 fun EmergencyContactScreenPreview() {
     QuickSOSTheme(dynamicColor = false) {
-        EmergencyContactScreen()
+        val navController = rememberNavController()
+        EmergencyContactScreen(navController)
     }
 }

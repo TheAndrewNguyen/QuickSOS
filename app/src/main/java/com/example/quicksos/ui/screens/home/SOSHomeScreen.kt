@@ -5,13 +5,16 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.quicksos.ui.shared.backgrounds.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.components.CustomTopAppBar
+import com.example.quicksos.ui.shared.components.NavBar
 import com.example.quicksos.ui.shared.components.TopAppBarTitle
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
-fun SOSHomeScreen() {
+fun SOSHomeScreen(navController: NavController) {
     val viewModel: HomeViewModel = viewModel()
 
     //action button data
@@ -32,9 +35,14 @@ fun SOSHomeScreen() {
         ActionButtonColumn()
     }
 
+    val bottomBar: @Composable () -> Unit = {
+        NavBar(navController = navController)
+    }
+
     TitleContentNavScaffold(
         topBar = { topBar() },
         content = { actionButtonColumn() },
+        bottomBar = { bottomBar() }
     )
 }
 
@@ -43,6 +51,7 @@ fun SOSHomeScreen() {
 @Composable
 fun SOSHomeScreenPreview() {
     QuickSOSTheme(dynamicColor = false) {
-        SOSHomeScreen()
+        val navController = rememberNavController()
+        SOSHomeScreen(navController)
     }
 }

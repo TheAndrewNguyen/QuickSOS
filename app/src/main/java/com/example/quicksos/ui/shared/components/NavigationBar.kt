@@ -17,10 +17,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.quicksos.ui.theme.QuickSOSTheme
-
 
 //items for NavBar
 val items = listOf("Action", "Location", "Emergency Contacts", "Settings")
@@ -30,6 +31,7 @@ val selectedIcons = listOf(
     Icons.Filled.AccountBox,
     Icons.Filled.Settings
 )
+
 val unselectedIcons = listOf(
     Icons.Outlined.Home,
     Icons.Outlined.LocationOn,
@@ -38,8 +40,15 @@ val unselectedIcons = listOf(
 )
 
 @Composable
-fun NavBar(modifier: Modifier = Modifier) {
+fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
     var selectedItem = remember { mutableIntStateOf(0) }
+
+    val navActions = listOf(
+        { navController.navigate("home") },
+        { navController.navigate("location") },
+        { navController.navigate("emergencyContacts") },
+        { navController.navigate("settings") }
+    )
 
     NavigationBar(modifier = modifier) {
         items.forEachIndexed { index, item ->
@@ -57,7 +66,7 @@ fun NavBar(modifier: Modifier = Modifier) {
                     )
                 },
                 selected = selectedItem.intValue == index,
-                onClick = { selectedItem.intValue = index }
+                onClick = { navActions[index]() }
             )
         }
     }
@@ -67,6 +76,7 @@ fun NavBar(modifier: Modifier = Modifier) {
 @Composable
 fun NavBarPreview() {
     QuickSOSTheme {
-        NavBar()
+        val navController = NavController(LocalContext.current)
+        NavBar(navController = navController)
     }
 }

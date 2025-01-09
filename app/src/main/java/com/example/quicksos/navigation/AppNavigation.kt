@@ -1,6 +1,7 @@
 package com.example.quicksos.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -14,9 +15,17 @@ fun AppNavigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Screen.Home.route) {
-        composable(Screen.Home.route) { SOSHomeScreen() }
-        composable(Screen.EmergencyContacts.route) { EmergencyContactScreen() }
-        composable(Screen.Location.route) { LocationScreen() }
-        composable(Screen.Settings.route) { SettingsScreen() }
+        composable(Screen.Home.route) { SOSHomeScreen(navController) }
+        composable(Screen.EmergencyContacts.route) { EmergencyContactScreen(navController) }
+        composable(Screen.Location.route) { LocationScreen(navController) }
+        composable(Screen.Settings.route) { SettingsScreen(navController) }
+    }
+
+}
+
+fun navigateTo(navController: NavController, route: String) {
+    navController.navigate(route) {
+        navController.navigate(route)
     }
 }
+

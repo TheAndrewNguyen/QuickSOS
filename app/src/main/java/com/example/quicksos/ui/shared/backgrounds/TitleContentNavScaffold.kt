@@ -1,7 +1,6 @@
 package com.example.quicksos.ui.shared.backgrounds
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -13,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.quicksos.ui.shared.components.CustomFloatingActionButton
-import com.example.quicksos.ui.shared.components.NavBar
 import com.example.quicksos.ui.shared.components.SearchBar
 import com.example.quicksos.ui.shared.components.TopAppBarTitle
 import com.example.quicksos.ui.theme.QuickSOSTheme
@@ -24,11 +22,13 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 fun TitleContentNavScaffold(
     topBar: @Composable ()-> Unit,
     content: @Composable () -> Unit,
-    floatingActionButton: @Composable () -> Unit = {})
+    bottomBar: @Composable () -> Unit = {},
+    floatingActionButton: @Composable () -> Unit = {},
+)
 {
     Scaffold(
         topBar = { topBar() },
-        bottomBar = { NavBar(Modifier.fillMaxWidth()) },
+        bottomBar = { bottomBar() },
         floatingActionButton = { floatingActionButton() },
     ) { innerPadding ->
         Column(
