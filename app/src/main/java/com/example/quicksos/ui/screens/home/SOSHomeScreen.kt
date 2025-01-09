@@ -9,8 +9,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.quicksos.ui.shared.backgrounds.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.components.CustomTopAppBar
-import com.example.quicksos.ui.shared.components.NavBar
 import com.example.quicksos.ui.shared.components.TopAppBarTitle
+import com.example.quicksos.ui.shared.components.bottomNavBar.NavBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable

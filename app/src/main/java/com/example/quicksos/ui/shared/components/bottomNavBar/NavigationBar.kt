@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.shared.components
+package com.example.quicksos.ui.shared.components.bottomNavBar
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
@@ -14,12 +14,11 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
@@ -41,7 +40,8 @@ val unselectedIcons = listOf(
 
 @Composable
 fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
-    var selectedItem = remember { mutableIntStateOf(0) }
+
+    val viewModel = viewModel<NavBarViewModel>()
 
     val navActions = listOf(
         { navController.navigate("home") },
@@ -55,7 +55,7 @@ fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
             NavigationBarItem(
                 icon = {
                     Icon(
-                        if (selectedItem.intValue == index) selectedIcons[index] else unselectedIcons[index],
+                        if (viewModel.selectedNavIndex.value == index) selectedIcons[index] else unselectedIcons[index],
                         contentDescription = item
                     )
                 },
@@ -65,8 +65,11 @@ fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
                         textAlign = TextAlign.Center
                     )
                 },
-                selected = selectedItem.intValue == index,
-                onClick = { navActions[index]() }
+                selected =  viewModel.selectedNavIndex.value == index,
+                onClick = {
+                    navActions[index]()
+                    viewModel.navIndexSet(index)
+                }
             )
         }
     }

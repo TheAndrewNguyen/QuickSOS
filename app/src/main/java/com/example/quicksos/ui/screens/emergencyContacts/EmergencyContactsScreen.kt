@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.quicksos.ui.shared.backgrounds.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.components.CustomFloatingActionButton
-import com.example.quicksos.ui.shared.components.NavBar
+import com.example.quicksos.ui.shared.components.bottomNavBar.NavBar
 import com.example.quicksos.ui.shared.components.SearchBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
