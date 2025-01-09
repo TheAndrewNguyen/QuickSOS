@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.shared.components
+package com.example.quicksos.ui.shared.backgrounds
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding

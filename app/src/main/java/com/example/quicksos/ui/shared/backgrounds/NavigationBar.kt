@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.shared.components.bottomNavBar
+package com.example.quicksos.ui.shared.backgrounds
 
 import android.util.Log
 import androidx.compose.material.icons.Icons
