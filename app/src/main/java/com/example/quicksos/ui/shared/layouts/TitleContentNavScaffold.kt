@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.shared.backgrounds
+package com.example.quicksos.ui.shared.layouts
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

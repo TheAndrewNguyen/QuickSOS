@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.shared.backgrounds
+package com.example.quicksos.ui.shared.layouts
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
