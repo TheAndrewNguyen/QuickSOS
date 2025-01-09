@@ -43,7 +43,7 @@ fun TitleContentNavScaffold(
 @Composable
 fun TitleNavTemplatePreviewText() {
     val title: @Composable () -> Unit = {
-        TopAppBarTitle(title = "Quick SOS")
+        TitleTextAlign(title = "Quick SOS")
     }
     val topBar: @Composable () -> Unit = {
         TopAppBar(title = title)

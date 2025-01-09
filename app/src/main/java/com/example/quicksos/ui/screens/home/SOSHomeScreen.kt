@@ -1,9 +1,12 @@
 package com.example.quicksos.ui.screens.home
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -11,7 +14,7 @@ import com.example.quicksos.navigation.NavigationViewModel
 import com.example.quicksos.ui.shared.layouts.CustomTopAppBar
 import com.example.quicksos.ui.shared.layouts.NavBar
 import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
-import com.example.quicksos.ui.shared.layouts.TopAppBarTitle
+import com.example.quicksos.ui.shared.layouts.TitleTextAlign
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
@@ -27,11 +30,13 @@ fun SOSHomeScreen(navController: NavController, navigationViewModel: NavigationV
     }
 
     val title: @Composable () -> Unit = {
-        TopAppBarTitle(title = "Quick SOS")
+        TitleTextAlign(title = "Quick SOS")
     }
+
     val topBar: @Composable () -> Unit = {
-        CustomTopAppBar(title = title)
+        CustomTopAppBar(modifier = Modifier.padding(top = 10.dp), title = title)
     }
+
     val actionButtonColumn : @Composable () -> Unit = {
         ActionButtonColumn()
     }

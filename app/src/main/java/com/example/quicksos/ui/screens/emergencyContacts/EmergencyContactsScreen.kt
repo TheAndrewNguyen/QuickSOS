@@ -3,23 +3,22 @@ package com.example.quicksos.ui.screens.emergencyContacts
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.quicksos.navigation.NavigationViewModel
-import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.layouts.CustomFloatingActionButton
-import com.example.quicksos.ui.shared.layouts.SearchBar
 import com.example.quicksos.ui.shared.layouts.NavBar
+import com.example.quicksos.ui.shared.layouts.SearchBar
+import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
 fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: NavigationViewModel = viewModel()) {
     
     val topBar: @Composable () -> Unit = {
-        SearchBar(modifier = Modifier, label = "Search Emergency Contacts")
+        SearchBar(label = "Search Emergency Contacts")
     }
     
     val floatingActionButton: @Composable () -> Unit = {
