@@ -3,8 +3,6 @@ package com.example.quicksos.ui.screens.home
 import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.quicksos.ui.theme.SOSBlUE
 import com.example.quicksos.ui.theme.SOSRED
@@ -13,16 +11,17 @@ import com.example.quicksos.utils.callNumber
 import com.example.quicksos.utils.textMultipleNumbers
 import com.example.quicksos.utils.textNumber
 
-data class ActionButtonData(val color: Color, val text: @Composable () -> Unit, val action : () -> Unit = {})
+data class ActionButtonData(
+    val color: Color,
+    val text: @Composable () -> Unit,
+    val action: () -> Unit = {}
+)
 
 class HomeViewModel : ViewModel() {
-
-    //ActionButtonData
-    private val _actionButtonData = MutableLiveData<List<ActionButtonData>>()
-    val actionButtonData: LiveData<List<ActionButtonData>> get() = _actionButtonData
+    var actionButtonData = mutableListOf<ActionButtonData>()
 
     fun loadActionData(context: Context) {
-        _actionButtonData.value = listOf(
+        val actionButtonDataList = listOf(
             ActionButtonData(
                 color = SOSRED,
                 text = { ButtonText("Call 911", "Call emergency services") },
@@ -44,5 +43,7 @@ class HomeViewModel : ViewModel() {
                     )
                 })
         )
+
+        actionButtonData = actionButtonDataList.toMutableList()
     }
 }

@@ -14,7 +14,7 @@ fun ActionButtonColumn() {
     val viewModel: HomeViewModel = viewModel()
 
 
-    val actionButtonDataList = viewModel.actionButtonData.value ?: emptyList()
+    val actionButtonDataList = viewModel.actionButtonData
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,

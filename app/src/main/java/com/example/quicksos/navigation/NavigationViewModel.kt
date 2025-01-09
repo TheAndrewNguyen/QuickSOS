@@ -13,8 +13,8 @@ class NavigationViewModel : ViewModel() {
     fun navBarIndexSet(index: Int) {
         Log.d("NavBar", "NavBarViewModel created")
         Log.d("NavBar", "Index Passed: $index")
-        if (selectedNavIndex.value == index) return
-        selectedNavIndex.value = index
-        Log.d("NavBar", "Index Set on ViewModel side: ${selectedNavIndex.value}")
+        if (selectedNavIndex.intValue == index) return
+        selectedNavIndex.intValue = index
+        Log.d("NavBar", "Index Set on ViewModel side: ${selectedNavIndex.intValue}")
     }
 }
