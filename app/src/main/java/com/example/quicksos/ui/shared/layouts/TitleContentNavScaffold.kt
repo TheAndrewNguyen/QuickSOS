@@ -1,6 +1,8 @@
 package com.example.quicksos.ui.shared.layouts
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -29,8 +31,10 @@ fun TitleContentNavScaffold(
         floatingActionButton = { floatingActionButton() },
     ) { innerPadding ->
         Column(
+            verticalArrangement = Arrangement.Center,
             modifier = Modifier //pass modifier from parent
                 .padding(innerPadding)
+                .fillMaxSize()
         ) {
             content()
         }
