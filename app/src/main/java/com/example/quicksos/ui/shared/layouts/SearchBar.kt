@@ -23,7 +23,7 @@ fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
         leadingIcon = { Icon(imageVector = Icons.Filled.Search, contentDescription = "Search") },
         shape = RoundedCornerShape(10.dp),
         modifier = modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(horizontal = 16.dp, vertical = 24.dp)
             .fillMaxWidth()
     )
 }

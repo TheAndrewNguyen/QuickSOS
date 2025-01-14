@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun TitleTextAlign(title: String = "", titleAlignment: TextAlign = TextAlign.Center) {
     Text(
         text = title,
-        style = MaterialTheme.typography.headlineMedium,
+        style = MaterialTheme.typography.headlineLarge,
         textAlign = titleAlignment,
         modifier = Modifier.fillMaxWidth()
     )

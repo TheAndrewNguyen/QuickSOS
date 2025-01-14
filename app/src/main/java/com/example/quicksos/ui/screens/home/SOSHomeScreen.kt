@@ -1,12 +1,10 @@
 package com.example.quicksos.ui.screens.home
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -34,7 +32,7 @@ fun SOSHomeScreen(navController: NavController, navigationViewModel: NavigationV
     }
 
     val topBar: @Composable () -> Unit = {
-        CustomTopAppBar(modifier = Modifier.padding(top = 10.dp), title = title)
+        CustomTopAppBar(modifier = Modifier, title = title)
     }
 
     val actionButtonColumn : @Composable () -> Unit = {
