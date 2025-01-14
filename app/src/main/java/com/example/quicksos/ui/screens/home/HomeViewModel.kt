@@ -34,7 +34,7 @@ class HomeViewModel : ViewModel() {
             ),
             ActionButtonData(
                 color = SOSYELLOW,
-                text = { ButtonText("Send SOS", "Alert friends and family") },
+                text = { ButtonText("Alert Contacts", "Notify emergency contacts") },
                 action = {
                     textMultipleNumbers(
                         context = context,

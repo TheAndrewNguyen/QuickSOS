@@ -30,12 +30,11 @@ fun ButtonText(title: String, description: String = "") {
         if(description != "") {
             Text(
                 text = description,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyLarge
             )
         }
     }
 }
-
 
 @Composable
 fun ActionButton(modifier: Modifier = Modifier, buttonColor: Color, buttonText: @Composable () -> Unit, buttonAction: () -> Unit = {}) {
