@@ -7,6 +7,7 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
 fun LocationScreen() {
+
     MapCompose()
 }
 
