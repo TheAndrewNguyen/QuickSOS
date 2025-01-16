@@ -44,8 +44,11 @@ dependencies {
     //navigation
     implementation("androidx.navigation:navigation-compose:2.8.5")
 
-    //mapping
+    //mapping with osm droid
     implementation("org.osmdroid:osmdroid-android:6.1.20")
+    implementation("org.osmdroid:osmdroid-wms:6.1.20")
+    implementation("org.osmdroid:osmdroid-mapsforge:6.1.20")
+    implementation("org.osmdroid:osmdroid-geopackage:6.1.20")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
