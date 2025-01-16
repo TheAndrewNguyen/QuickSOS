@@ -44,6 +44,9 @@ dependencies {
     //navigation
     implementation("androidx.navigation:navigation-compose:2.8.5")
 
+    //mapping
+    implementation("org.osmdroid:osmdroid-android:6.1.20")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
