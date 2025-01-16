@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.quicksos"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -40,15 +40,14 @@ android {
 }
 
 dependencies {
-
     //navigation
     implementation("androidx.navigation:navigation-compose:2.8.5")
 
     //mapping with osm droid
     implementation("org.osmdroid:osmdroid-android:6.1.20")
-    implementation("org.osmdroid:osmdroid-wms:6.1.20")
-    implementation("org.osmdroid:osmdroid-mapsforge:6.1.20")
-    implementation("org.osmdroid:osmdroid-geopackage:6.1.20")
+    //implementation("org.osmdroid:osmdroid-wms:6.1.20")
+    //implementation("org.osmdroid:osmdroid-mapsforge:6.1.20")
+    //implementation("org.osmdroid:osmdroid-geopackage:6.1.20")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -65,5 +64,4 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
 }
