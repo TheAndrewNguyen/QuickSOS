@@ -24,7 +24,7 @@ fun AppNavigation(modifier: Modifier) {
             composable(Screen.EmergencyContacts.route) {
                 EmergencyContactScreen(navController, navViewModel)
             }
-            composable(Screen.Location.route) { LocationScreen() }
+            composable(Screen.Location.route) { LocationScreen(navController, navViewModel) }
             composable(Screen.Settings.route) { SettingsScreen() }
         }
     }
