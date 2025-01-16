@@ -10,9 +10,16 @@ import androidx.navigation.compose.rememberNavController
 import com.example.quicksos.navigation.NavigationViewModel
 import com.example.quicksos.ui.shared.layouts.CustomFloatingActionButton
 import com.example.quicksos.ui.shared.layouts.NavBar
-import com.example.quicksos.ui.shared.layouts.SearchBar
 import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.theme.QuickSOSTheme
+
+@Composable
+fun EmergencyContactContent() {
+    /*TODO*/
+}
+
+
+
 
 @Composable
 fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: NavigationViewModel = viewModel()) {

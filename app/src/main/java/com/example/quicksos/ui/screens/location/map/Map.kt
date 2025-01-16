@@ -1,10 +1,13 @@
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.quicksos.ui.theme.QuickSOSTheme
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -35,8 +38,10 @@ fun MapView() {
 fun MapCompose() {
     // A surface container using the 'background' color from the theme
     Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        color = MaterialTheme.colorScheme.background,
+        modifier = Modifier
+            .height(300.dp)
+            .padding(vertical = 8.dp)
     ) {
         MapView()
     }

@@ -13,8 +13,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.quicksos.ui.screens.emergencyContacts.SearchBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

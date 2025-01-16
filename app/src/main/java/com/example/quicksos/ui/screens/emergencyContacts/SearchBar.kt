@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.shared.layouts
+package com.example.quicksos.ui.screens.emergencyContacts
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
