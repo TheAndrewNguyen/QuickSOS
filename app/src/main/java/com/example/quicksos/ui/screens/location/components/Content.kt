@@ -36,7 +36,7 @@ fun InformationText(modifier: Modifier = Modifier, text: String) {
             .fillMaxWidth()
             .padding(horizontal = 16.dp), // Adjust padding for better spacing
         fontSize = fontSize,
-        fontStyle = MaterialTheme.typography.displayMedium.fontStyle,
+        fontStyle = MaterialTheme.typography.displayLarge.fontStyle,
         maxLines = 1,
     )
 }

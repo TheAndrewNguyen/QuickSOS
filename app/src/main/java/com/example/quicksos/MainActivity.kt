@@ -10,14 +10,16 @@ import com.example.quicksos.ui.navigation.AppNavigation
 import com.example.quicksos.ui.theme.QuickSOSTheme
 import org.osmdroid.config.Configuration
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //osmdroid
+        //osmdroid maps
         val ctx = applicationContext
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx))
         Configuration.getInstance().userAgentValue = "QuickSOS"
+        //location services
 
         setContent {
             QuickSOSTheme(dynamicColor = false) {
