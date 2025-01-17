@@ -1,10 +1,7 @@
 package com.example.quicksos.ui.screens.location
 
 import MapCompose
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -41,13 +38,12 @@ fun InformationText(modifier: Modifier = Modifier, text: String) {
         text = text,
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp),
+            .padding(horizontal = 16.dp), // Adjust padding for better spacing
         fontSize = fontSize,
         fontStyle = MaterialTheme.typography.displayMedium.fontStyle,
         maxLines = 2,
     )
 }
-
 
 @Composable
 fun LocationInfo(modifier: Modifier = Modifier) {
@@ -55,7 +51,7 @@ fun LocationInfo(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxSize()
-            .padding(8.dp)
+            .padding(16.dp)
     ) {
         InformationText(text = "Coordinates: (47.583914, -122.150077)")
         InformationText(text = "Address: 1234 Main St, Anytown USA")
@@ -76,7 +72,7 @@ fun HelpButton(
         colors = ButtonDefaults.buttonColors(),
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 16.dp)
+            .padding(vertical = 8.dp) // Consistent vertical padding
     ) {
         Text(
             text = "Get Help",
@@ -92,23 +88,21 @@ fun LocationScreenContent(navController: NavController, navViewModel: Navigation
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        MapCompose(modifier = Modifier.weight(0.5f))
-        LocationInfo(modifier = Modifier.weight(0.3f))
+        MapCompose(modifier = Modifier.weight(0.7f)) // Adjust map size dynamically
+        LocationInfo(modifier = Modifier.weight(0.1f)) // Adjust weight for better layout distribution
         HelpButton(
-            modifier = Modifier.weight(0.2f),
+            modifier = Modifier.weight(0.2f), // Adjust weight for button size consistency
             navController = navController,
             navViewModel = navViewModel
         )
     }
 }
 
-
 @Composable
 fun LocationScreen(
     navController: NavController,
     navigationViewModel: NavigationViewModel = viewModel()
 ) {
-
     val title: @Composable () -> Unit = {
         TitleTextAlign(title = "Current Location")
     }
@@ -131,7 +125,6 @@ fun LocationScreen(
         bottomBar = { bottomBar() }
     )
 }
-
 
 @Preview(showBackground = true)
 @Composable
