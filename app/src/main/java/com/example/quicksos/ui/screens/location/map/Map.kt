@@ -35,11 +35,11 @@ fun MapView() {
 }
 
 @Composable
-fun MapCompose() {
+fun MapCompose(modifier: Modifier = Modifier) {
     // A surface container using the 'background' color from the theme
     Surface(
         color = MaterialTheme.colorScheme.background,
-        modifier = Modifier
+        modifier = modifier
             .height(300.dp)
             .padding(vertical = 8.dp)
     ) {
