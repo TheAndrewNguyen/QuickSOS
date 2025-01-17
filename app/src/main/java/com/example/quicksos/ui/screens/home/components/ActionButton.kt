@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.screens.home
+package com.example.quicksos.ui.screens.home.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

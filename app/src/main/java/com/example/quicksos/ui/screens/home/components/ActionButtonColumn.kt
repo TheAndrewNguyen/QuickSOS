@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.screens.home
+package com.example.quicksos.ui.screens.home.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.quicksos.ui.screens.home.HomeViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
+import com.example.quicksos.ui.screens.home.components.ButtonText
 import com.example.quicksos.ui.theme.SOSBlUE
 import com.example.quicksos.ui.theme.SOSRED
 import com.example.quicksos.ui.theme.SOSYELLOW

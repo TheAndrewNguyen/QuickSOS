@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.shared.layouts
+package com.example.quicksos.ui.shared.layouts.components
 
 import android.util.Log
 import androidx.compose.material.icons.Icons

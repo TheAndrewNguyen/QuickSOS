@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.shared.layouts
+package com.example.quicksos.ui.shared.layouts.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
