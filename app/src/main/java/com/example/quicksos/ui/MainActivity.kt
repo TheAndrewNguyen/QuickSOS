@@ -1,4 +1,4 @@
-package com.example.quicksos
+package com.example.quicksos.ui
 
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import com.example.quicksos.ui.navigation.AppNavigation
 import com.example.quicksos.ui.theme.QuickSOSTheme
+import dagger.hilt.android.AndroidEntryPoint
 import org.osmdroid.config.Configuration
 
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +21,6 @@ class MainActivity : ComponentActivity() {
         val ctx = applicationContext
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx))
         Configuration.getInstance().userAgentValue = "QuickSOS"
-        //location services
 
         setContent {
             QuickSOSTheme(dynamicColor = false) {

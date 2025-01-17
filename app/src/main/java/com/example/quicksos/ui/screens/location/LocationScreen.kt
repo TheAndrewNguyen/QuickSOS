@@ -20,6 +20,14 @@ fun LocationScreen(
     navController: NavController,
     navigationViewModel: NavigationViewModel = viewModel()
 ) {
+
+    val locationViewModel: LocationsViewModel = LocationsViewModel(
+        fusedLocationClient = TODO()
+    )
+
+    locationViewModel.getLastLocation()
+
+
     val title: @Composable () -> Unit = {
         TitleTextAlign(title = "Current Location")
     }
