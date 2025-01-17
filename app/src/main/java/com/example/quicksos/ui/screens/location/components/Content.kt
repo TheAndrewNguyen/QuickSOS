@@ -24,9 +24,9 @@ fun InformationText(modifier: Modifier = Modifier, text: String) {
     val screenWidth = configuration.screenWidthDp
 
     val fontSize = when {
-        screenWidth > 600 -> 20.sp  // Large screens (e.g., tablets)
-        screenWidth > 400 -> 18.sp  // Medium screens (e.g., phones)
-        else -> 16.sp               // Small screens
+        screenWidth > 600 -> 18.sp  // Large screens (e.g., tablets)
+        screenWidth > 400 -> 16.sp  // Medium screens (e.g., phones)
+        else -> 14.sp               // Small screens
     }
 
     Text(
@@ -36,7 +36,7 @@ fun InformationText(modifier: Modifier = Modifier, text: String) {
             .padding(horizontal = 16.dp), // Adjust padding for better spacing
         fontSize = fontSize,
         fontStyle = MaterialTheme.typography.displayMedium.fontStyle,
-        maxLines = 2,
+        maxLines = 1,
     )
 }
 
@@ -46,7 +46,7 @@ fun LocationInfo(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(8.dp)
     ) {
         InformationText(text = "Coordinates: (47.583914, -122.150077)")
         InformationText(text = "Address: 1234 Main St, Anytown USA")
@@ -83,8 +83,8 @@ fun LocationScreenContent(navController: NavController, navViewModel: Navigation
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        MapCompose(modifier = Modifier.weight(0.7f)) // Adjust map size dynamically
-        LocationInfo(modifier = Modifier.weight(0.1f)) // Adjust weight for better layout distribution
+        MapCompose(modifier = Modifier.weight(0.6f)) // Adjust map size dynamically
+        LocationInfo(modifier = Modifier.weight(0.2f)) // Adjust weight for better layout distribution
         HelpButton(
             modifier = Modifier.weight(0.2f), // Adjust weight for button size consistency
             navController = navController,
