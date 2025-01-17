@@ -5,8 +5,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,17 +27,35 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 @Composable
 fun Location() {
     Column(
-        horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth()
     ) {
-        Text("(Coordinates: 47.583914, -122.150077)")
+        Text("Coordinates: (47.583914, -122.150077)")
         Text("(Address: 1234 Main St, Anytown USA)")
-
     }
 }
 
 @Composable
-fun LocationScreenContent() {
+fun HelpButton(navController: NavController, navViewModel: NavigationViewModel) {
+    Button(
+        onClick = {
+            navController.navigate("Home")
+            navViewModel.navBarIndexSet(0)
+        },
+        colors = ButtonDefaults.buttonColors(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 16.dp)
+    ) {
+        Text(
+            text = "Help",
+            style = MaterialTheme.typography.displaySmall
+        )
+    }
+}
+
+@Composable
+fun LocationScreenContent(navController: NavController, navViewModel: NavigationViewModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,13 +63,16 @@ fun LocationScreenContent() {
     ) {
         MapCompose()
         Location()
+        HelpButton(navController, navViewModel)
     }
 }
 
 
-
 @Composable
-fun LocationScreen(navController: NavController, navigationViewModel: NavigationViewModel = viewModel()) {
+fun LocationScreen(
+    navController: NavController,
+    navigationViewModel: NavigationViewModel = viewModel()
+) {
 
     val title: @Composable () -> Unit = {
         TitleTextAlign(title = "Current Location")
@@ -57,8 +82,8 @@ fun LocationScreen(navController: NavController, navigationViewModel: Navigation
         CustomTopAppBar(modifier = Modifier, title = title)
     }
 
-    val content : @Composable () -> Unit = {
-        LocationScreenContent()
+    val content: @Composable () -> Unit = {
+        LocationScreenContent(navController, navigationViewModel)
     }
 
     val bottomBar: @Composable () -> Unit = {

@@ -44,7 +44,6 @@ val unselectedIcons = listOf(
 fun NavBar(modifier: Modifier = Modifier, navController: NavController, navBarViewModel: NavigationViewModel = viewModel()) {
 
     val viewModel = navBarViewModel
-
     val selectedIndex = viewModel.selectedNavIndex.intValue
     Log.d("NavBar", "Selected Index on compose side: $selectedIndex")
 
