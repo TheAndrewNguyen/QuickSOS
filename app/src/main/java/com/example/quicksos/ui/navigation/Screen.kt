@@ -1,4 +1,4 @@
-package com.example.quicksos.navigation
+package com.example.quicksos.ui.navigation
 
 sealed class Screen(val route: String) {
     object Home : Screen("home")

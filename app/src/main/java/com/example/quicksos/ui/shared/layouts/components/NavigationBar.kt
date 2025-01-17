@@ -21,7 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.quicksos.navigation.NavigationViewModel
+import com.example.quicksos.ui.navigation.NavigationViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 //items for NavBar

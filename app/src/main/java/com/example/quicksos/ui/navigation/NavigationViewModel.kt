@@ -1,4 +1,4 @@
-package com.example.quicksos.navigation
+package com.example.quicksos.ui.navigation
 
 
 import android.util.Log

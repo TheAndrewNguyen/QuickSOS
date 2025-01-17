@@ -7,7 +7,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.quicksos.navigation.NavigationViewModel
+import com.example.quicksos.ui.navigation.NavigationViewModel
 import com.example.quicksos.ui.screens.emergencyContacts.components.SearchBar
 import com.example.quicksos.ui.shared.layouts.components.CustomFloatingActionButton
 import com.example.quicksos.ui.shared.layouts.components.NavBar

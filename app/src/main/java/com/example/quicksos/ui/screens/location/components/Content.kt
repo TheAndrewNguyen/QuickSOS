@@ -1,6 +1,7 @@
 package com.example.quicksos.ui.screens.location.components
 
 import MapCompose
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,7 +17,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.quicksos.navigation.NavigationViewModel
+import com.example.quicksos.ui.navigation.NavigationViewModel
 
 @Composable
 fun InformationText(modifier: Modifier = Modifier, text: String) {
@@ -44,6 +45,7 @@ fun InformationText(modifier: Modifier = Modifier, text: String) {
 fun LocationInfo(modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
         modifier = modifier
             .fillMaxSize()
             .padding(8.dp)

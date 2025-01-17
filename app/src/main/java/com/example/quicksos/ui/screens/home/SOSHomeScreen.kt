@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.quicksos.navigation.NavigationViewModel
+import com.example.quicksos.ui.navigation.NavigationViewModel
 import com.example.quicksos.ui.screens.home.components.ActionButtonColumn
 import com.example.quicksos.ui.shared.layouts.components.CustomTopAppBar
 import com.example.quicksos.ui.shared.layouts.components.NavBar
