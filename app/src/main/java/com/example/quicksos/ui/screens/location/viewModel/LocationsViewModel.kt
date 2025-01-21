@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.screens.location
+package com.example.quicksos.ui.screens.location.viewModel
 
 import android.annotation.SuppressLint
 import android.util.Log

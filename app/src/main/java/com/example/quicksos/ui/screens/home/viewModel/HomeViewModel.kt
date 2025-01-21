@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.screens.home
+package com.example.quicksos.ui.screens.home.viewModel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
