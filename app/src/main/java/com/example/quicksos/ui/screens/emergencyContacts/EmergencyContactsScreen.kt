@@ -8,19 +8,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.quicksos.ui.navigation.NavigationViewModel
+import com.example.quicksos.ui.screens.emergencyContacts.components.EmergencyContactsColumn
 import com.example.quicksos.ui.screens.emergencyContacts.components.SearchBar
+import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.layouts.components.CustomFloatingActionButton
 import com.example.quicksos.ui.shared.layouts.components.NavBar
-import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.theme.QuickSOSTheme
-
-@Composable
-fun EmergencyContactContent() {
-    /*TODO*/
-}
-
-
-
 
 @Composable
 fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: NavigationViewModel = viewModel()) {
@@ -38,7 +31,7 @@ fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: Na
     }
 
     val content: @Composable () -> Unit = {
-        /*TODO*/
+        EmergencyContactsColumn()
     }
 
     val bottomBar: @Composable () -> Unit = {

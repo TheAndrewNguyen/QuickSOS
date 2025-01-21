@@ -7,12 +7,14 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+
 @HiltViewModel
 class LocationsViewModel @Inject constructor(private val fusedLocationClient: FusedLocationProviderClient) :
     ViewModel() {
 
     @SuppressLint("MissingPermission")
     fun getLastLocation() {
+        Log.d("FusedLocationD", "getLastLocation called")
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location ->
                 if (location != null) {
