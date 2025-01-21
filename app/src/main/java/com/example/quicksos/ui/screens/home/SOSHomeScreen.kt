@@ -10,9 +10,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.quicksos.ui.navigation.NavigationViewModel
 import com.example.quicksos.ui.screens.home.components.ActionButtonColumn
+import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.layouts.components.CustomTopAppBar
 import com.example.quicksos.ui.shared.layouts.components.NavBar
-import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.layouts.components.TitleTextAlign
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
@@ -22,10 +22,10 @@ fun SOSHomeScreen(navController: NavController, navigationViewModel: NavigationV
 
     //action button data
     val context = LocalContext.current
-    viewModel.loadActionData(context)
+    viewModel.getActionData(context)
 
     LaunchedEffect(Unit) {
-        viewModel.loadActionData(context)
+        viewModel.getActionData(context)
     }
 
     val title: @Composable () -> Unit = {
