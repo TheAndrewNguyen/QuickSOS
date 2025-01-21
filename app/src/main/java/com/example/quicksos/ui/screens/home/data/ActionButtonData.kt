@@ -17,7 +17,7 @@ data class ActionButtonDataModel(
     val action: () -> Unit = {}
 )
 
-fun loadActionButtonData(context: Context): MutableList<ActionButtonDataModel> {
+fun actionButtonData(context: Context): MutableList<ActionButtonDataModel> {
     return mutableListOf<ActionButtonDataModel>(
         ActionButtonDataModel(
             color = SOSRED,
