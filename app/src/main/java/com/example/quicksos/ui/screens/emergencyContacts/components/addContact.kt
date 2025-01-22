@@ -12,6 +12,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -25,6 +26,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
+
 /*TODO: Refactor this to accomodate data entry*/
 @Composable
 fun EntryField(
@@ -34,14 +36,19 @@ fun EntryField(
     keyBoardType: KeyboardType = KeyboardType.Text,
     modifier: Modifier = Modifier,
 ) {
-
     OutlinedTextField(
+        label = { Text(label) },
         value = value,
         onValueChange = { value ->
             updateValue(value)
         },
-        label = { Text(label) },
-        singleLine = true,
+        colors = OutlinedTextFieldDefaults.colors(
+            focusedBorderColor = MaterialTheme.colorScheme.onSurface,
+            unfocusedBorderColor = MaterialTheme.colorScheme.onSurface,
+            focusedLabelColor = MaterialTheme.colorScheme.onSurface,
+            unfocusedLabelColor = MaterialTheme.colorScheme.onSurface,
+        ),
+        maxLines = 1,
         keyboardOptions = KeyboardOptions(
             keyboardType = keyBoardType
         ),

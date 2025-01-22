@@ -14,4 +14,3 @@ val white = Color(0xFFFFFFFF)
 //light mode
 val Black = Color(0xFF000000)
 
-
