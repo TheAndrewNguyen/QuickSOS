@@ -1,6 +1,5 @@
 package com.example.quicksos.ui.screens.emergencyContacts.viewModel
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -10,6 +9,10 @@ import com.example.quicksos.ui.screens.emergencyContacts.data.emergencyContactsD
 
 class EmergencyContactsViewModel : ViewModel() {
 
+    //show dialog variable
+    var showDialog by mutableStateOf(false)
+        private set
+
     //current dialog box
     var currentFirstName by mutableStateOf("")
         private set
@@ -17,6 +20,11 @@ class EmergencyContactsViewModel : ViewModel() {
         private set
     var currentPhoneNumber by mutableStateOf("")
         private set
+
+    //Setters
+    fun updateShowDialog(bool: Boolean) {
+        showDialog = bool
+    }
 
     fun updateFirstName(firstName: String) {
         currentFirstName = firstName
@@ -30,11 +38,13 @@ class EmergencyContactsViewModel : ViewModel() {
         currentPhoneNumber = phoneNumber
     }
 
+    //on submit button clicked
     fun onSubmit() {
         val data = emergencyContactsDataModel(firstName = currentFirstName, lastName = currentLastName, phoneNumber = currentPhoneNumber)
-        Log.d("EmergencyContactsViewModel", "onSubmit: $data")
         updateFirstName("")
         updateLastName("")
         updatePhoneNumber("")
+
+        /*TODO send data back to the backend*/
     }
 }

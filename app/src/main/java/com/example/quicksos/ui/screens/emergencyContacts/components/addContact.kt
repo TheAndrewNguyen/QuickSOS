@@ -1,6 +1,5 @@
 package com.example.quicksos.ui.screens.emergencyContacts.components
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,7 +31,7 @@ fun EntryField(
     modifier: Modifier = Modifier,
     keyBoardType: KeyboardType = KeyboardType.Text,
     value: String,
-    updateValue: (value: String)->Unit,
+    updateValue: (value: String) -> Unit,
     label: String = "",
 ) {
 
@@ -50,7 +49,7 @@ fun EntryField(
 }
 
 @Composable
-fun DecisionButton(text: String, onClick: ()->Unit ) {
+fun DecisionButton(text: String, onClick: () -> Unit) {
     Button(onClick = { onClick() }) {
         Text(
             text = text,
@@ -63,69 +62,64 @@ fun DecisionButton(text: String, onClick: ()->Unit ) {
 @Composable
 fun AddContactDialog(
     onDismissRequest: () -> Unit,
-    showDialog: Boolean = false,
-    onSave: (firstName: String, lastName: String, phoneNumber: String) -> Unit //name, phone number
 ) {
     val viewModel: EmergencyContactsViewModel = viewModel()
 
-    if (showDialog) {
-        Dialog(
-            onDismissRequest = { onDismissRequest() }
+    Dialog(
+        onDismissRequest = { onDismissRequest() }
+    ) {
+        Card(
+            shape = RoundedCornerShape(16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(325.dp)
+                .padding(16.dp)
         ) {
-            Card(
-                shape = RoundedCornerShape(16.dp),
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(325.dp)
+                    .fillMaxSize()
                     .padding(16.dp)
             ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
+                Text(
+                    text = "Add Contact",
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Row(
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp)
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp)
                 ) {
-                    Text(
-                        text = "Add Contact",
-                        style = MaterialTheme.typography.titleLarge
-                    )
-                    Row(
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 16.dp)
-                    ) {
-                        EntryField(
-                            label = "First Name",
-                            value = viewModel.currentFirstName,
-                            updateValue = { viewModel.updateFirstName(it) },
-                            modifier = Modifier.weight(0.5f)
-                        )
-                        EntryField(
-                            label = "Last Name",
-                            value = viewModel.currentLastName,
-                            updateValue = { viewModel.updateLastName(it) },
-                            modifier = Modifier.weight(0.5f)
-                        )
-                    }
                     EntryField(
-                        label = "Phone Number",
-                        keyBoardType = KeyboardType.Number,
-                        value = viewModel.currentPhoneNumber,
-                        updateValue = { viewModel.updatePhoneNumber(it) },
-                        )
+                        label = "First Name",
+                        value = viewModel.currentFirstName,
+                        updateValue = { viewModel.updateFirstName(it) },
+                        modifier = Modifier.weight(0.5f)
+                    )
+                    EntryField(
+                        label = "Last Name",
+                        value = viewModel.currentLastName,
+                        updateValue = { viewModel.updateLastName(it) },
+                        modifier = Modifier.weight(0.5f)
+                    )
+                }
+                EntryField(
+                    label = "Phone Number",
+                    keyBoardType = KeyboardType.Number,
+                    value = viewModel.currentPhoneNumber,
+                    updateValue = { viewModel.updatePhoneNumber(it) },
+                )
 
-
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.End),
-                        modifier = Modifier
-                            .padding(vertical = 16.dp)
-                            .fillMaxWidth()
-                    ) {
-                        DecisionButton(text = "Cancel", onClick = { onDismissRequest() })
-                        DecisionButton(text = "Add", onClick = { viewModel.onSubmit() } )
-                    }
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.End),
+                    modifier = Modifier
+                        .padding(vertical = 16.dp)
+                        .fillMaxWidth()
+                ) {
+                    DecisionButton(text = "Cancel", onClick = { onDismissRequest() })
+                    DecisionButton(text = "Add", onClick = { viewModel.onSubmit() })
                 }
             }
         }
@@ -139,9 +133,6 @@ fun AddContactDialogPreview() {
     QuickSOSTheme {
         AddContactDialog(
             onDismissRequest = {},
-            showDialog = true,
-        ) { firstName, lastName, phoneNumber ->
-            Log.d("AddContactDialog", "First Name: $firstName, Last Name: $lastName, Phone Number: $phoneNumber")
-        }
+        )
     }
 }
