@@ -28,12 +28,12 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 /*TODO: Refactor this to accomodate data entry*/
 @Composable
 fun EntryField(
-    modifier: Modifier = Modifier,
-    keyBoardType: KeyboardType = KeyboardType.Text,
+    label: String = "",
     value: String,
     updateValue: (value: String) -> Unit,
-    label: String = "",
-) {
+    keyBoardType: KeyboardType = KeyboardType.Text,
+    modifier: Modifier = Modifier,
+    ) {
 
     OutlinedTextField(
         value = value,
