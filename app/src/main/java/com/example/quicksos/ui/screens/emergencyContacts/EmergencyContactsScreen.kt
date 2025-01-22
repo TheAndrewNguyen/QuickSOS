@@ -25,7 +25,7 @@ fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: Na
     val floatingActionButton: @Composable () -> Unit = {
         CustomFloatingActionButton(
             icon = Icons.Filled.Add,
-            onClick = { /*TODO*/},
+            onClick = { },
             contentDescription = "Add Emergency Contact"
         )
     }

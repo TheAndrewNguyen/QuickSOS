@@ -53,6 +53,9 @@ dependencies {
     //location services
     implementation("com.google.android.gms:play-services-location:21.3.0")
 
+    //jetpack datastore
+    implementation("androidx.datastore:datastore-preferences:1.1.2")
+
     //dagger and hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")

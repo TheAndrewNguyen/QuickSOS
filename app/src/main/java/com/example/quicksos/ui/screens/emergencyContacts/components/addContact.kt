@@ -83,19 +83,22 @@ fun AddContactContent() {
 @Composable
 fun AddContactDialog(
     onDismissRequest: () -> Unit,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
+    showDialog: Boolean = false
 ) {
-    Dialog(
-        onDismissRequest = { onDismissRequest }
-    ) {
-        Card(
-            shape = RoundedCornerShape(16.dp),
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(325.dp)
-                .padding(16.dp)
+    if(showDialog) {
+        Dialog(
+            onDismissRequest = { onDismissRequest }
         ) {
-            content()
+            Card(
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(325.dp)
+                    .padding(16.dp)
+            ) {
+                content()
+            }
         }
     }
 }
@@ -105,6 +108,6 @@ fun AddContactDialog(
 @Composable
 fun AddContactDialogPreview() {
     QuickSOSTheme {
-        AddContactDialog(onDismissRequest = {}, content = { AddContactContent() })
+        AddContactDialog(onDismissRequest = {}, content = { AddContactContent() }, showDialog = true)
     }
 }
