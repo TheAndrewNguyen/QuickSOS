@@ -117,7 +117,6 @@ fun AddContactDialog(
                     updateValue = { viewModel.updatePhoneNumber(it) },
                 )
 
-
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.End),
                     verticalAlignment = Alignment.CenterVertically,
