@@ -99,16 +99,6 @@ fun AddContactDialog(
     }
 }
 
-@Preview
-@Composable
-fun EntryFieldPreview() {
-    EntryField(label = "Name")
-}
-@Preview(showBackground = true)
-@Composable
-fun AddContactContentPreview() {
-    AddContactContent()
-}
 
 @Preview(showBackground = true)
 @Composable
