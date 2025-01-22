@@ -36,7 +36,8 @@ fun EntryField(modifier: Modifier = Modifier, label: String = "") {
 @Composable
 fun DecisionButton(text: String, onClick: () -> Unit) {
     Button(onClick = { onClick }) {
-        Text(text = text,
+        Text(
+            text = text,
             color = MaterialTheme.colorScheme.onPrimary,
             modifier = Modifier
         )
@@ -85,7 +86,7 @@ fun AddContactDialog(
     content: @Composable () -> Unit
 ) {
     Dialog(
-        onDismissRequest = {onDismissRequest}
+        onDismissRequest = { onDismissRequest }
     ) {
         Card(
             shape = RoundedCornerShape(16.dp),
