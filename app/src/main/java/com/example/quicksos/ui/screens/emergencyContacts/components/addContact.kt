@@ -33,18 +33,20 @@ fun EntryField(
     updateValue: (value: String) -> Unit,
     keyBoardType: KeyboardType = KeyboardType.Text,
     modifier: Modifier = Modifier,
-    ) {
+) {
 
     OutlinedTextField(
         value = value,
-        onValueChange = { value -> updateValue(value) },
+        onValueChange = { value ->
+            updateValue(value)
+        },
         label = { Text(label) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(
             keyboardType = keyBoardType
         ),
         modifier = modifier
-            .padding(horizontal = 4.dp)
+            .padding(horizontal = 4.dp, vertical = 0.dp)
     )
 }
 
@@ -52,7 +54,7 @@ fun EntryField(
 fun DecisionButton(text: String, onClick: () -> Unit) {
     TextButton(
         onClick = { onClick() },
-        ) {
+    ) {
         Text(
             text = text,
             style = MaterialTheme.typography.titleSmall,
@@ -115,14 +117,30 @@ fun AddContactDialog(
                     updateValue = { viewModel.updatePhoneNumber(it) },
                 )
 
+
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.End),
+                    verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .padding(vertical = 16.dp)
                         .fillMaxWidth()
                 ) {
+                    //in case of invalid input
+                    if(!viewModel.validInput) {
+                        Text(
+                            text = "*Invalid Input",
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.labelLarge,
+                            modifier = Modifier.padding(end = 30.dp)
+                        )
+                    }
                     DecisionButton(text = "Cancel", onClick = { onDismissRequest() })
-                    DecisionButton(text = "Add", onClick = { viewModel.onSubmit() })
+                    DecisionButton(text = "Add", onClick = {
+                        val submitResult = viewModel.onSubmit()
+                        if(submitResult) {
+                            onDismissRequest()
+                        }
+                    })
                 }
             }
         }
