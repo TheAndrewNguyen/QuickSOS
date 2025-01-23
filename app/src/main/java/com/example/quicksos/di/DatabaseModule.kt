@@ -21,7 +21,10 @@ object DatabaseModule {
             context,
             ContactsDatabase::class.java,
             "contacts_database"
-        ).build()
+        )
+            .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Provides

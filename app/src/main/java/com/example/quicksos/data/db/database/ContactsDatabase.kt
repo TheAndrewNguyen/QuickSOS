@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.quicksos.data.db.dao.ContactDao
 import com.example.quicksos.data.db.entity.Contact
 
-@Database(entities = [Contact::class], version = 1)
+@Database(entities = [Contact::class], version = 2)
 abstract class ContactsDatabase : RoomDatabase() {
     abstract fun contactDao(): ContactDao
 }

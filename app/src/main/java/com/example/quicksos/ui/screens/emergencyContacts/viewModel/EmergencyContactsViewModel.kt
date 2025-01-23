@@ -1,12 +1,16 @@
 package com.example.quicksos.ui.screens.emergencyContacts.viewModel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.quicksos.data.db.entity.Contact
 import com.example.quicksos.data.repository.ContactsDbRepository
 import com.example.quicksos.utils.validateTextLengthGreaterThanOne
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -61,7 +65,23 @@ class EmergencyContactsViewModel @Inject constructor(
             validInput = false
             return false
         }
-        /*TODO send data back to the backend*/
+
+        //format data
+        val data = Contact(
+            firstName = currentFirstName.toString(),
+            lastName = currentLastName.toString(),
+            phoneNumber = currentPhoneNumber.toString()
+        )
+
+        Log.d("onSubmit", "onSubmit: $data")
+
+        //send data to the backend
+        repository.insertContact(data)
+
+
+        //reset the values on the front end
+        resetValues()
+
         return true
     }
 }

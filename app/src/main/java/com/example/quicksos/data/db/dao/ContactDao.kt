@@ -11,5 +11,5 @@ interface ContactDao {
     fun getAll(): List<Contact>
 
     @Insert
-    fun insert(contact: Contact)
+    fun insert(vararg contact: Contact)
 }
