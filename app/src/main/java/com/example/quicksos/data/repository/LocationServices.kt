@@ -1,4 +1,4 @@
-package com.example.quicksos.repository
+package com.example.quicksos.data.repository
 
 import android.annotation.SuppressLint
 import android.util.Log

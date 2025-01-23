@@ -26,8 +26,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
-
-/*TODO: Refactor this to accomodate data entry*/
 @Composable
 fun EntryField(
     label: String = "",

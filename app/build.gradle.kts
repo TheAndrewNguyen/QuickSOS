@@ -56,9 +56,15 @@ dependencies {
     //jetpack datastore
     implementation("androidx.datastore:datastore-preferences:1.1.2")
 
+    //jetpack data store
+    implementation("androidx.datastore:datastore:1.1.2")
+    implementation("androidx.datastore:datastore-rxjava2:1.1.2")
+    implementation("androidx.datastore:datastore-rxjava3:1.1.2")
+
     //dagger and hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
