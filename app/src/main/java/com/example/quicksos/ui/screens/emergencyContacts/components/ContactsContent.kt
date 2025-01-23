@@ -72,9 +72,21 @@ fun EmergencyContactsColumn() {
     }
 
     LazyColumn(
+        horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
+        verticalArrangement = if(viewModel.contactsList.isEmpty()) Arrangement.Center else Arrangement.Top,
         modifier = Modifier
             .fillMaxSize()
-    ) { //contact cards
+    ) {
+        //contact cards
+        if(viewModel.contactsList.isEmpty()) {
+            item {
+                Text(
+                    text = "No Emergency Contacts",
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
         viewModel.contactsList.forEach {
             item {
                 EmergencyContactCard(
