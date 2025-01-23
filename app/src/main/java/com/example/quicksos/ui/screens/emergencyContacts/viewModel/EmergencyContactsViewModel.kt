@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.example.quicksos.ui.screens.emergencyContacts.data.emergencyContactsDataModel
 import com.example.quicksos.utils.validateTextLengthGreaterThanOne
 
-
 class EmergencyContactsViewModel : ViewModel() {
 
     //show dialog variable
