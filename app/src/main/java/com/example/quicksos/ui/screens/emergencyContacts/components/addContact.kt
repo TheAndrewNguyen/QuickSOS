@@ -140,8 +140,8 @@ fun AddContactDialog(
                     }
                     DecisionButton(text = "Cancel", onClick = { onDismissRequest() })
                     DecisionButton(text = "Add", onClick = {
-                        val submitResult = viewModel.onSubmit()
-                        if(submitResult) {
+                        viewModel.onSubmit()
+                        if(viewModel.validInput) {
                             onDismissRequest()
                         }
                     })
