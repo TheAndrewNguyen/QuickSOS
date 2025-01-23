@@ -15,9 +15,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 
@@ -62,12 +65,23 @@ fun EmergencyContactCard(name: String, phoneNumber: String) {
 
 @Composable
 fun EmergencyContactsColumn() {
+    val viewModel: EmergencyContactsViewModel = hiltViewModel()
+
+    LaunchedEffect(Unit) {
+        viewModel.updateData()
+    }
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-    ) {
-        items(10) {
-            EmergencyContactCard(name = "John Doe", phoneNumber = "123-456-7890")
+    ) { //contact cards
+        viewModel.contactsList.forEach {
+            item {
+                EmergencyContactCard(
+                    name = it.firstName + " " + it.lastName,
+                    phoneNumber = it.phoneNumber.toString()
+                )
+            }
         }
     }
 }

@@ -15,6 +15,8 @@ class EmergencyContactsViewModel @Inject constructor(
     private val repository: ContactsDbRepository
 ) : ViewModel()  {
 
+    var contactsList by mutableStateOf(emptyList<Contact>())
+
     //show dialog variable
     var showDialog by mutableStateOf(false)
         private set
@@ -75,5 +77,9 @@ class EmergencyContactsViewModel @Inject constructor(
 
         //reset the values on the front end
         resetValues()
+    }
+
+    fun updateData() {
+        contactsList = repository.getAllContacts()
     }
 }
