@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
@@ -20,7 +21,7 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 @Composable
 fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: NavigationViewModel = viewModel()) {
 
-    val viewModel: EmergencyContactsViewModel = viewModel()
+    val viewModel: EmergencyContactsViewModel = hiltViewModel()
 
     val topBar: @Composable () -> Unit = {
         SearchBar(label = "Search Emergency Contacts")

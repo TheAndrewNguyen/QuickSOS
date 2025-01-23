@@ -4,10 +4,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.quicksos.ui.screens.emergencyContacts.data.emergencyContactsDataModel
+import com.example.quicksos.data.repository.ContactsDbRepository
 import com.example.quicksos.utils.validateTextLengthGreaterThanOne
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class EmergencyContactsViewModel : ViewModel() {
+@HiltViewModel
+class EmergencyContactsViewModel @Inject constructor(
+    private val repository: ContactsDbRepository
+) : ViewModel()  {
 
     //show dialog variable
     var showDialog by mutableStateOf(false)
@@ -57,11 +62,6 @@ class EmergencyContactsViewModel : ViewModel() {
             return false
         }
 
-        //put data into a model
-        val data = emergencyContactsDataModel(firstName = currentFirstName, lastName = currentLastName, phoneNumber = currentPhoneNumber)
-        resetValues()
-
-        //send data to the backend
         /*TODO send data back to the backend*/
         return true
     }

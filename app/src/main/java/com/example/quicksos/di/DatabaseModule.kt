@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DatabaseModule{
+object DatabaseModule {
     @Provides
     @Singleton
     fun provideContactsDatabase(@ApplicationContext context: Context): ContactsDatabase {
@@ -23,4 +23,8 @@ object DatabaseModule{
             "contacts_database"
         ).build()
     }
+
+    @Provides
+    @Singleton
+    fun provideContactDao(contactsDatabase: ContactsDatabase) = contactsDatabase.contactDao()
 }
