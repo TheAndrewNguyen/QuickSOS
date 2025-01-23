@@ -61,7 +61,6 @@ class EmergencyContactsViewModel @Inject constructor(
             validInput = false
             return false
         }
-
         /*TODO send data back to the backend*/
         return true
     }
