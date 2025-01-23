@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -53,13 +54,11 @@ dependencies {
     //location services
     implementation("com.google.android.gms:play-services-location:21.3.0")
 
-    //jetpack datastore
-    implementation("androidx.datastore:datastore-preferences:1.1.2")
-
-    //jetpack data store
-    implementation("androidx.datastore:datastore:1.1.2")
-    implementation("androidx.datastore:datastore-rxjava2:1.1.2")
-    implementation("androidx.datastore:datastore-rxjava3:1.1.2")
+    //room database
+    implementation("androidx.room:room-runtime:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+    testImplementation("androidx.room:room-testing:2.6.1")
+    implementation("androidx.room:room-paging:2.6.1")
 
     //dagger and hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
