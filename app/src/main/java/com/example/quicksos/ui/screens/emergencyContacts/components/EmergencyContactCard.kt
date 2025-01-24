@@ -16,12 +16,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
+import com.example.quicksos.utils.callNumber
 
 
 @Composable
@@ -37,9 +40,11 @@ fun NameAndPhoneNumber(name: String, phoneNumber: String) {
 }
 
 @Composable
-fun EmergencyTapButtonGroup() {
+fun EmergencyTapButtonGroup(phoneNumber: String) {
+    val context = LocalContext.current
+
     Button( //call button
-        onClick = {},
+        onClick = { callNumber(context, phoneNumber) },
         modifier = Modifier
             .padding(16.dp)
             .background(MaterialTheme.colorScheme.surface)
@@ -52,14 +57,14 @@ fun EmergencyTapButtonGroup() {
 fun EmergencyContactCard(name: String, phoneNumber: String) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 4.dp)
             .background(MaterialTheme.colorScheme.surface)
         ) {
         NameAndPhoneNumber(name = name, phoneNumber = phoneNumber)
-        EmergencyTapButtonGroup()
+        EmergencyTapButtonGroup(phoneNumber = phoneNumber)
     }
 }
 
@@ -72,7 +77,7 @@ fun EmergencyContactsColumn() {
     }
 
     LazyColumn(
-        horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = if(viewModel.contactsList.isEmpty()) Arrangement.Center else Arrangement.Top,
         modifier = Modifier
             .fillMaxSize()
@@ -97,8 +102,6 @@ fun EmergencyContactsColumn() {
         }
     }
 }
-
-
 
 @Preview(showBackground = true)
 @Composable
