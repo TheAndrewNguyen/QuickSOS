@@ -31,7 +31,6 @@ class EmergencyContactsViewModel @Inject constructor(
     var currentPhoneNumber by mutableStateOf("")
         private set
 
-    //Setters
     fun updateShowDialog(bool: Boolean) {
         showDialog = bool
     }

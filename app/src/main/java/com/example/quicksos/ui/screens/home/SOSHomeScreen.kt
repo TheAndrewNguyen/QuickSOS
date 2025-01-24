@@ -23,7 +23,6 @@ fun SOSHomeScreen(navController: NavController, navigationViewModel: NavigationV
 
     //action button data
     val context = LocalContext.current
-    viewModel.getActionData(context)
 
     LaunchedEffect(Unit) {
         viewModel.getActionData(context)
