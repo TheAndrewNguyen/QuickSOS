@@ -27,7 +27,7 @@ import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyCont
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
-fun EntryField(
+fun CustomEntryField(
     label: String = "",
     value: String,
     updateValue: (value: String) -> Unit,
@@ -56,7 +56,7 @@ fun EntryField(
 }
 
 @Composable
-fun DecisionButton(text: String, onClick: () -> Unit) {
+fun CustomDecisionButton(text: String, onClick: () -> Unit) {
     TextButton(
         onClick = { onClick() },
     ) {
@@ -71,9 +71,9 @@ fun DecisionButton(text: String, onClick: () -> Unit) {
 
 @Composable
 fun AddContactDialog(
+    viewModel: EmergencyContactsViewModel = viewModel(),
     onDismissRequest: () -> Unit,
 ) {
-    val viewModel: EmergencyContactsViewModel = viewModel()
 
     Dialog(
         onDismissRequest = { onDismissRequest() }
@@ -102,20 +102,20 @@ fun AddContactDialog(
                         .fillMaxWidth()
                         .padding(vertical = 16.dp)
                 ) {
-                    EntryField(
+                    CustomEntryField(
                         label = "First Name",
                         value = viewModel.currentFirstName,
                         updateValue = { viewModel.updateFirstName(it) },
                         modifier = Modifier.weight(0.5f)
                     )
-                    EntryField(
+                    CustomEntryField(
                         label = "Last Name",
                         value = viewModel.currentLastName,
                         updateValue = { viewModel.updateLastName(it) },
                         modifier = Modifier.weight(0.5f)
                     )
                 }
-                EntryField(
+                CustomEntryField(
                     label = "Phone Number",
                     keyBoardType = KeyboardType.Number,
                     value = viewModel.currentPhoneNumber,
@@ -138,8 +138,8 @@ fun AddContactDialog(
                             modifier = Modifier.padding(end = 30.dp)
                         )
                     }
-                    DecisionButton(text = "Cancel", onClick = { onDismissRequest() })
-                    DecisionButton(text = "Add", onClick = {
+                    CustomDecisionButton(text = "Cancel", onClick = { onDismissRequest() })
+                    CustomDecisionButton(text = "Add", onClick = {
                         viewModel.onSubmit()
                         if(viewModel.validInput) {
                             onDismissRequest()
@@ -150,7 +150,6 @@ fun AddContactDialog(
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
