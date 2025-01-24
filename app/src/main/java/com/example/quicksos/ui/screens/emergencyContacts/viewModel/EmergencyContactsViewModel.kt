@@ -79,6 +79,6 @@ class EmergencyContactsViewModel @Inject constructor(
     }
 
     fun updateData() {
-        contactsList = repository.getAllContacts()
+        contactsList = repository.sortByNameAsc()
     }
 }

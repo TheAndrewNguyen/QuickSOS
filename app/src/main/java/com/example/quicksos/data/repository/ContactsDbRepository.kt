@@ -10,4 +10,6 @@ class ContactsDbRepository @Inject constructor(private val dao : ContactDao) {
     fun insertContact(contact: Contact) {
         dao.insert(contact)
     }
+
+    fun sortByNameAsc() : List<Contact> = dao.sortByNameAsc()
 }
