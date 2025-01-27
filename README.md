@@ -1,4 +1,5 @@
 # Quick SOS
+![Status](https://img.shields.io/badge/Status-In%20Development-orange) ![Android](https://img.shields.io/badge/Platform-Android-green) ![Kotlin](https://img.shields.io/badge/Kotlin-1.5-blue) ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-1.0.0-blue) ![OSMDroid](https://img.shields.io/badge/OSMDroid-4.0.0-orange)![Room Database](https://img.shields.io/badge/Room%20Database-2.4.0-green)  ![Hilt](https://img.shields.io/badge/Hilt-DI-yellow) 
 Quick SOS is a quick and reliable safety app that is designed to get in contact with emergency services with a single click of a button.
 
 ## Features
@@ -16,19 +17,20 @@ Quick SOS is a quick and reliable safety app that is designed to get in contact 
 ## Technical architecture:
 
 ### Android(MVP)
-- UI: 
+- **UI Layer:** 
     - Jetpack Compose
     - Toast Notifications 
-- Call and texting: 
+- **Call and texting:** 
     - Android Intent (Calling and texting)
     - Work Manager (background tasks)
-- Location: 
+- **Location:** 
     - Fused Location Provider
-- Maps:
+- **Maps:**
     - OSMDroid
-- Storage: 
-    - Room database
-- Dependency Injection
+- **Storage:** 
+    - Room database (storing contacts)
+    - Jetpack datastore (storing user preferences)
+- **Dependency Injection**
     - Hilt 
 
 ## License
