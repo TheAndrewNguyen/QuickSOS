@@ -16,12 +16,24 @@ Quick SOS is a quick and reliable safety app that is designed to get in contact 
 ## Technical architecture:
 
 ### Android(MVP)
-- UI: Material 3, Jetpack Compose
-- Call and texting: Android Intent
-- Location services: Android location services
-- Storage: Jetpack Datastore
-
-### IOS (Coming soon)
+- UI: 
+    - Jetpack Compose
+    - Toast Notifications 
+- Call and texting: 
+    - Android Intent (Calling and texting)
+    - Work Manager (background tasks)
+- Location: 
+    - Fused Location Provider
+- Maps:
+    - OSMDroid
+- Storage: 
+    - Room database
+- Dependency Injection
+    - Hilt 
 
 ## License
 See [LICENSE](/LICENSE)
+
+## Contact
+Andrew Nguyen 
+Email: anguye34@uw.edu
