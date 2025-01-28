@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.quicksos.data.db.entity.Contact
 import com.example.quicksos.data.repository.ContactsDbRepository
-import com.example.quicksos.utils.validateTextLengthGreaterThanOne
+import com.example.quicksos.utils.hasTextLength
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -61,10 +61,11 @@ class EmergencyContactsViewModel @Inject constructor(
     //on submit button clicked
     fun onSubmit() {
         //check if all input boxes are greater than one
-        if(!validateTextLengthGreaterThanOne(currentFirstName)
-            && !validateTextLengthGreaterThanOne(currentLastName)
-            && !validateTextLengthGreaterThanOne(currentPhoneNumber)) {
+        if(!hasTextLength(currentFirstName)
+            && !hasTextLength(currentLastName)
+            && !hasTextLength(currentPhoneNumber)) {
             validInput = false
+            return
         }
 
         //format data

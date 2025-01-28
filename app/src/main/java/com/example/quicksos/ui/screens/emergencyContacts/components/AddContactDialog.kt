@@ -51,7 +51,7 @@ fun CustomEntryField(
             keyboardType = keyBoardType
         ),
         modifier = modifier
-            .padding(horizontal = 4.dp, vertical = 0.dp)
+            .padding(horizontal = 4.dp, vertical = 4.dp)
     )
 }
 
@@ -74,7 +74,6 @@ fun AddContactDialog(
     viewModel: EmergencyContactsViewModel = viewModel(),
     onDismissRequest: () -> Unit,
 ) {
-
     Dialog(
         onDismissRequest = { onDismissRequest() }
     ) {
@@ -82,7 +81,7 @@ fun AddContactDialog(
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier
                 .fillMaxWidth()
-                .height(325.dp)
+                .height(400.dp)
                 .padding(16.dp)
         ) {
             Column(
@@ -90,31 +89,25 @@ fun AddContactDialog(
                 verticalArrangement = Arrangement.Center,
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp)
+                    .padding(8.dp)
             ) {
                 Text(
                     text = "Add Contact",
                     style = MaterialTheme.typography.titleLarge
                 )
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 16.dp)
-                ) {
-                    CustomEntryField(
-                        label = "First Name",
-                        value = viewModel.currentFirstName,
-                        updateValue = { viewModel.updateFirstName(it) },
-                        modifier = Modifier.weight(0.5f)
-                    )
-                    CustomEntryField(
-                        label = "Last Name",
-                        value = viewModel.currentLastName,
-                        updateValue = { viewModel.updateLastName(it) },
-                        modifier = Modifier.weight(0.5f)
-                    )
-                }
+                //first name entry field
+                CustomEntryField(
+                    label = "First Name",
+                    value = viewModel.currentFirstName,
+                    updateValue = { viewModel.updateFirstName(it) },
+                )
+                //last name entry field
+                CustomEntryField(
+                    label = "Last Name",
+                    value = viewModel.currentLastName,
+                    updateValue = { viewModel.updateLastName(it) },
+                )
+                //phone number entry field
                 CustomEntryField(
                     label = "Phone Number",
                     keyBoardType = KeyboardType.Number,
@@ -122,15 +115,15 @@ fun AddContactDialog(
                     updateValue = { viewModel.updatePhoneNumber(it) },
                 )
 
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.End),
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .padding(vertical = 16.dp)
-                        .fillMaxWidth()
-                ) {
-                    //in case of invalid input
-                    if(!viewModel.validInput) {
+                //if invalid input show invalid message
+                if (!viewModel.validInput) {
+                    Row(
+                        horizontalArrangement = Arrangement.Start,
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .padding(vertical = 4.dp)
+                            .fillMaxWidth()
+                    ) {
                         Text(
                             text = "*Invalid Input",
                             color = MaterialTheme.colorScheme.error,
@@ -138,10 +131,24 @@ fun AddContactDialog(
                             modifier = Modifier.padding(end = 30.dp)
                         )
                     }
-                    CustomDecisionButton(text = "Cancel", onClick = { onDismissRequest() })
+                }
+
+                //Add and cancel buttons
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.End),
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .padding(vertical = 4.dp)
+                        .fillMaxWidth()
+                ) {
+                    CustomDecisionButton(text = "Cancel", onClick = {
+                        onDismissRequest()
+                        viewModel.resetEntryFieldValues()
+                    })
+
                     CustomDecisionButton(text = "Add", onClick = {
                         viewModel.onSubmit()
-                        if(viewModel.validInput) {
+                        if (viewModel.validInput) {
                             onDismissRequest()
                         }
                     })
