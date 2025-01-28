@@ -14,48 +14,51 @@ import javax.inject.Inject
 class EmergencyContactsViewModel @Inject constructor(
     private val repository: ContactsDbRepository
 ) : ViewModel()  {
-
     //list to be presented
     var contactsList by mutableStateOf(emptyList<Contact>())
-
-    //show dialog variable
-    var showAddContactDialog by mutableStateOf(false)
         private set
 
-    //is valid input in show dialogs correct
-    var validInput by mutableStateOf(true)
+    //ui state of screen
+    var uiState = mutableStateOf<UiState>(UiState.NoDialog)
+        private set
 
-    //Dialog box fields
+    fun updateUiState(state: UiState) {
+        uiState.value = state
+    }
+
+    //first name Entry Field
     var currentFirstName by mutableStateOf("")
         private set
-    var currentLastName by mutableStateOf("")
-        private set
-    var currentPhoneNumber by mutableStateOf("")
-        private set
-
-    //to be changed to update state
-    fun updateShowDialog(bool: Boolean) {
-        showAddContactDialog = bool
-    }
 
     fun updateFirstName(firstName: String) {
         currentFirstName = firstName
     }
 
+    //last name Entry Field
+    var currentLastName by mutableStateOf("")
+        private set
+
     fun updateLastName(lastName: String) {
         currentLastName = lastName
     }
 
+    //phone number Entry Field
+    var currentPhoneNumber by mutableStateOf("")
+        private set
+
     fun updatePhoneNumber(phoneNumber: String) {
         currentPhoneNumber = phoneNumber
     }
+
+    //is valid input in show dialogs correct
+    var entryFieldValidInput by mutableStateOf(true)
 
     //reset values
     fun resetEntryFieldValues() {
         updateFirstName("")
         updateLastName("")
         updatePhoneNumber("")
-        validInput = true
+        entryFieldValidInput = true
     }
 
     //on submit button clicked
@@ -64,7 +67,7 @@ class EmergencyContactsViewModel @Inject constructor(
         if(!hasTextLength(currentFirstName)
             || !hasTextLength(currentLastName)
             || !hasTextLength(currentPhoneNumber)) {
-            validInput = false
+            entryFieldValidInput = false
             return
         }
 
@@ -85,4 +88,10 @@ class EmergencyContactsViewModel @Inject constructor(
     fun updateData() {
         contactsList = repository.sortByNameAsc()
     }
+}
+
+sealed class UiState() {
+    object NoDialog : UiState()
+    object AddDialog : UiState()
+    object EditDialog: UiState()
 }

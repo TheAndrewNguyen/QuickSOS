@@ -13,6 +13,7 @@ import com.example.quicksos.ui.screens.emergencyContacts.components.AddContactDi
 import com.example.quicksos.ui.screens.emergencyContacts.components.EmergencyContactsColumn
 import com.example.quicksos.ui.screens.emergencyContacts.components.SearchBar
 import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
+import com.example.quicksos.ui.screens.emergencyContacts.viewModel.UiState
 import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.layouts.components.CustomFloatingActionButton
 import com.example.quicksos.ui.shared.layouts.components.NavBar
@@ -30,19 +31,20 @@ fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: Na
     val floatingActionButton: @Composable () -> Unit = {
         CustomFloatingActionButton(
             icon = Icons.Filled.Add,
-            onClick = { viewModel.updateShowDialog(true) },
+            onClick = { viewModel.updateUiState(UiState.AddDialog) },
             contentDescription = "Add Emergency Contact"
         )
     }
 
     val content: @Composable () -> Unit = {
-        if(viewModel.showAddContactDialog) {
-            AddContactDialog(
+        when(viewModel.uiState.value) {
+            UiState.NoDialog -> { EmergencyContactsColumn() }
+            UiState.AddDialog ->
+                AddContactDialog(
                 viewModel = viewModel,
-                onDismissRequest = { viewModel.updateShowDialog(false) }
+                onDismissRequest = { viewModel.updateUiState(UiState.NoDialog) }
             )
-        } else {
-            EmergencyContactsColumn()
+            UiState.EditDialog -> { TODO() }
         }
     }
 

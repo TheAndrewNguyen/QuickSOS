@@ -22,7 +22,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
@@ -71,7 +71,7 @@ fun CustomDecisionButton(text: String, onClick: () -> Unit) {
 
 @Composable
 fun AddContactDialog(
-    viewModel: EmergencyContactsViewModel = viewModel(),
+    viewModel: EmergencyContactsViewModel = hiltViewModel(),
     onDismissRequest: () -> Unit,
 ) {
     Dialog(
@@ -116,7 +116,7 @@ fun AddContactDialog(
                 )
 
                 //if invalid input show invalid message
-                if (!viewModel.validInput) {
+                if (!viewModel.entryFieldValidInput) {
                     Row(
                         horizontalArrangement = Arrangement.Start,
                         verticalAlignment = Alignment.CenterVertically,
@@ -148,7 +148,7 @@ fun AddContactDialog(
 
                     CustomDecisionButton(text = "Add", onClick = {
                         viewModel.onSubmit()
-                        if (viewModel.validInput) {
+                        if (viewModel.entryFieldValidInput) {
                             onDismissRequest()
                         }
                     })

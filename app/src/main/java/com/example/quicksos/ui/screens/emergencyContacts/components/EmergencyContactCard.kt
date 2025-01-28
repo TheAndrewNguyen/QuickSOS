@@ -63,13 +63,10 @@ fun EmergencyContactCard(contact : Contact) {
     }
 }
 
-
-
 @Preview(showBackground = true)
 @Composable
 fun EmergencyContactCardPreview() {
     QuickSOSTheme {
         EmergencyContactCard(contact = Contact(firstName = "John", lastName = "Doe", phoneNumber = "1234567890"))
-
     }
 }
