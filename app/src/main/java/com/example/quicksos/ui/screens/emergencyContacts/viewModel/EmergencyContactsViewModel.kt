@@ -62,8 +62,8 @@ class EmergencyContactsViewModel @Inject constructor(
     fun onSubmit() {
         //check if all input boxes are greater than one
         if(!hasTextLength(currentFirstName)
-            && !hasTextLength(currentLastName)
-            && !hasTextLength(currentPhoneNumber)) {
+            || !hasTextLength(currentLastName)
+            || !hasTextLength(currentPhoneNumber)) {
             validInput = false
             return
         }

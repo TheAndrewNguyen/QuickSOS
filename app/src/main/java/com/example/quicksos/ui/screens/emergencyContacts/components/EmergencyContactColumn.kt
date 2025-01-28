@@ -29,7 +29,7 @@ fun EmergencyContactsColumn() {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        //contact cards
+        //if there are no contacts display message
         if(viewModel.contactsList.isEmpty()) {
             item {
                 Text(
@@ -39,12 +39,11 @@ fun EmergencyContactsColumn() {
                 )
             }
         }
+
+        //if there are contacts populate the contact cards
         viewModel.contactsList.forEach {
             item {
-                EmergencyContactCard(
-                    name = it.firstName + " " + it.lastName,
-                    phoneNumber = it.phoneNumber.toString()
-                )
+                EmergencyContactCard(contact = it)
             }
         }
     }

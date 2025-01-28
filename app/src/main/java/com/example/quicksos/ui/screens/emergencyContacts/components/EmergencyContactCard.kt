@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.quicksos.data.db.entity.Contact
 import com.example.quicksos.ui.theme.QuickSOSTheme
 import com.example.quicksos.utils.callNumber
 
@@ -48,7 +49,7 @@ fun EmergencyTapButtonGroup(phoneNumber: String) {
 }
 
 @Composable
-fun EmergencyContactCard(name: String, phoneNumber: String) {
+fun EmergencyContactCard(contact : Contact) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
@@ -57,8 +58,8 @@ fun EmergencyContactCard(name: String, phoneNumber: String) {
             .padding(horizontal = 16.dp, vertical = 4.dp)
             .background(MaterialTheme.colorScheme.surface)
         ) {
-        NameAndPhoneNumber(name = name, phoneNumber = phoneNumber)
-        EmergencyTapButtonGroup(phoneNumber = phoneNumber)
+        NameAndPhoneNumber(name = "${contact.firstName} ${contact.lastName}", phoneNumber = "${contact.phoneNumber}")
+        EmergencyTapButtonGroup(phoneNumber = "${contact.phoneNumber}")
     }
 }
 
@@ -68,6 +69,7 @@ fun EmergencyContactCard(name: String, phoneNumber: String) {
 @Composable
 fun EmergencyContactCardPreview() {
     QuickSOSTheme {
-        EmergencyContactCard(name = "John Doe", phoneNumber = "123-456-7890")
+        EmergencyContactCard(contact = Contact(firstName = "John", lastName = "Doe", phoneNumber = "1234567890"))
+
     }
 }
