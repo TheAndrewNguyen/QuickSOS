@@ -36,7 +36,7 @@ fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: Na
     }
 
     val content: @Composable () -> Unit = {
-        if(viewModel.showDialog) {
+        if(viewModel.showAddContactDialog) {
             AddContactDialog(
                 viewModel = viewModel,
                 onDismissRequest = { viewModel.updateShowDialog(false) }

@@ -68,40 +68,7 @@ fun EmergencyContactCard(name: String, phoneNumber: String) {
     }
 }
 
-@Composable
-fun EmergencyContactsColumn() {
-    val viewModel: EmergencyContactsViewModel = hiltViewModel()
 
-    LaunchedEffect(Unit) {
-        viewModel.updateData()
-    }
-
-    LazyColumn(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = if(viewModel.contactsList.isEmpty()) Arrangement.Center else Arrangement.Top,
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
-        //contact cards
-        if(viewModel.contactsList.isEmpty()) {
-            item {
-                Text(
-                    text = "No Emergency Contacts",
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.padding(16.dp)
-                )
-            }
-        }
-        viewModel.contactsList.forEach {
-            item {
-                EmergencyContactCard(
-                    name = it.firstName + " " + it.lastName,
-                    phoneNumber = it.phoneNumber.toString()
-                )
-            }
-        }
-    }
-}
 
 @Preview(showBackground = true)
 @Composable

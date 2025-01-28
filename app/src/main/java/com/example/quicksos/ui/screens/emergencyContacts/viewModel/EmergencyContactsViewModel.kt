@@ -15,15 +15,17 @@ class EmergencyContactsViewModel @Inject constructor(
     private val repository: ContactsDbRepository
 ) : ViewModel()  {
 
+    //list to be presented
     var contactsList by mutableStateOf(emptyList<Contact>())
 
     //show dialog variable
-    var showDialog by mutableStateOf(false)
+    var showAddContactDialog by mutableStateOf(false)
         private set
 
+    //is valid input in show dialogs correct
     var validInput by mutableStateOf(true)
 
-    //current dialog box
+    //Dialog box fields
     var currentFirstName by mutableStateOf("")
         private set
     var currentLastName by mutableStateOf("")
@@ -31,8 +33,9 @@ class EmergencyContactsViewModel @Inject constructor(
     var currentPhoneNumber by mutableStateOf("")
         private set
 
+    //to be changed to update state
     fun updateShowDialog(bool: Boolean) {
-        showDialog = bool
+        showAddContactDialog = bool
     }
 
     fun updateFirstName(firstName: String) {
@@ -48,7 +51,7 @@ class EmergencyContactsViewModel @Inject constructor(
     }
 
     //reset values
-    fun resetValues() {
+    fun resetEntryFieldValues() {
         updateFirstName("")
         updateLastName("")
         updatePhoneNumber("")
@@ -75,7 +78,7 @@ class EmergencyContactsViewModel @Inject constructor(
         repository.insertContact(data)
 
         //reset the values on the front end
-        resetValues()
+        resetEntryFieldValues()
     }
 
     fun updateData() {
