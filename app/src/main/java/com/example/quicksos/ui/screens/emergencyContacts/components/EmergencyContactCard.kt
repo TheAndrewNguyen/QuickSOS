@@ -1,6 +1,7 @@
 package com.example.quicksos.ui.screens.emergencyContacts.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -49,7 +50,7 @@ fun EmergencyTapButtonGroup(phoneNumber: String) {
 }
 
 @Composable
-fun EmergencyContactCard(contact : Contact) {
+fun EmergencyContactCard(contact : Contact, onClick:(contact: Contact) -> Unit = {}) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
@@ -57,6 +58,7 @@ fun EmergencyContactCard(contact : Contact) {
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 4.dp)
             .background(MaterialTheme.colorScheme.surface)
+            .clickable { onClick(contact) }
         ) {
         NameAndPhoneNumber(name = "${contact.firstName} ${contact.lastName}", phoneNumber = "${contact.phoneNumber}")
         EmergencyTapButtonGroup(phoneNumber = "${contact.phoneNumber}")

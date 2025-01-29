@@ -50,6 +50,8 @@ class EmergencyContactsViewModel @Inject constructor(
         currentPhoneNumber = phoneNumber
     }
 
+    var selectedContact by mutableStateOf<Contact?>(null)
+
     //is valid input in show dialogs correct
     var entryFieldValidInput by mutableStateOf(true)
 

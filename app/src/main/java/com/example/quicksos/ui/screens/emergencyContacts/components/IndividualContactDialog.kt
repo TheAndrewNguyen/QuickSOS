@@ -26,7 +26,7 @@ import com.example.quicksos.data.db.entity.Contact
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun IndividualContactDialog(contact: Contact, onDismissRequest: () -> Unit) {
+fun IndividualContactDialog(contact: Contact?, onDismissRequest: () -> Unit) {
     Dialog(
         onDismissRequest = { onDismissRequest() }
     ) {
@@ -40,7 +40,7 @@ fun IndividualContactDialog(contact: Contact, onDismissRequest: () -> Unit) {
             TopAppBar(
                 title = {
                     Text(
-                        text = "${contact.firstName} ${contact.lastName}",
+                        text = "${contact?.firstName} ${contact?.lastName}",
                         style = MaterialTheme.typography.headlineSmall,
                     )
                 },
@@ -87,7 +87,7 @@ fun IndividualContactDialog(contact: Contact, onDismissRequest: () -> Unit) {
                 )
                 //phone number
                 Text(
-                    text = "${contact.phoneNumber}",
+                    text = "${contact?.phoneNumber}",
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurface,
                 )

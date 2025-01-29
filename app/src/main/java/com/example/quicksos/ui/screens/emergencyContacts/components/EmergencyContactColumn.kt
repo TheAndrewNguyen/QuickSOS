@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
+import com.example.quicksos.ui.screens.emergencyContacts.viewModel.UiState
 
 @Composable
 fun EmergencyContactsColumn() {
@@ -25,12 +26,12 @@ fun EmergencyContactsColumn() {
 
     LazyColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = if(viewModel.contactsList.isEmpty()) Arrangement.Center else Arrangement.Top,
+        verticalArrangement = if (viewModel.contactsList.isEmpty()) Arrangement.Center else Arrangement.Top,
         modifier = Modifier
             .fillMaxSize()
     ) {
         //if there are no contacts display message
-        if(viewModel.contactsList.isEmpty()) {
+        if (viewModel.contactsList.isEmpty()) {
             item {
                 Text(
                     text = "No Emergency Contacts",
@@ -39,11 +40,14 @@ fun EmergencyContactsColumn() {
                 )
             }
         }
-
         //if there are contacts populate the contact cards
-        viewModel.contactsList.forEach {
-            item {
-                EmergencyContactCard(contact = it)
+        items(viewModel.contactsList.size) { index ->
+            EmergencyContactCard(contact = viewModel.contactsList[index]) { contact ->
+                //when clicked update selectedContact
+                viewModel.selectedContact = contact
+
+                //update ui state
+                viewModel.updateUiState(UiState.EditDialog)
             }
         }
     }

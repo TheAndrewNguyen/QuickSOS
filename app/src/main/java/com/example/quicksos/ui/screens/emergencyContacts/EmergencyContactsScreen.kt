@@ -1,5 +1,6 @@
 package com.example.quicksos.ui.screens.emergencyContacts
 
+import IndividualContactDialog
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
@@ -44,7 +45,15 @@ fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: Na
                 viewModel = viewModel,
                 onDismissRequest = { viewModel.updateUiState(UiState.NoDialog) }
             )
-            UiState.EditDialog -> { TODO() }
+            UiState.EditDialog -> {
+                IndividualContactDialog(
+                    contact = viewModel.selectedContact,
+                    onDismissRequest = {
+                        viewModel.updateUiState(UiState.NoDialog)
+                        viewModel.selectedContact = null
+                    }
+                )
+            }
         }
     }
 
