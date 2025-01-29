@@ -60,6 +60,7 @@ class EmergencyContactsViewModel @Inject constructor(
         updateFirstName("")
         updateLastName("")
         updatePhoneNumber("")
+        selectedContact = null
         entryFieldValidInput = true
     }
 
@@ -87,6 +88,13 @@ class EmergencyContactsViewModel @Inject constructor(
         resetEntryFieldValues()
     }
 
+    //delete teh contact
+    fun deleteContact(contact: Contact) {
+        repository.deleteContact(contact)
+        resetEntryFieldValues()
+        updateData()
+    }
+
     fun updateData() {
         contactsList = repository.sortByNameAsc()
     }
@@ -96,4 +104,5 @@ sealed class UiState() {
     object NoDialog : UiState()
     object AddDialog : UiState()
     object EditDialog: UiState()
+    object DeleteDialog: UiState()
 }

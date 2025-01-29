@@ -11,6 +11,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.quicksos.ui.navigation.NavigationViewModel
 import com.example.quicksos.ui.screens.emergencyContacts.components.AddContactDialog
+import com.example.quicksos.ui.screens.emergencyContacts.components.DeleteContactDialog
 import com.example.quicksos.ui.screens.emergencyContacts.components.EmergencyContactsColumn
 import com.example.quicksos.ui.screens.emergencyContacts.components.SearchBar
 import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
@@ -21,14 +22,17 @@ import com.example.quicksos.ui.shared.layouts.components.NavBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
-fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: NavigationViewModel = viewModel()) {
+fun EmergencyContactScreen(
+    navController: NavHostController,
+    navBarViewModel: NavigationViewModel = viewModel()
+) {
 
     val viewModel: EmergencyContactsViewModel = hiltViewModel()
 
     val topBar: @Composable () -> Unit = {
         SearchBar(label = "Search Emergency Contacts")
     }
-    
+
     val floatingActionButton: @Composable () -> Unit = {
         CustomFloatingActionButton(
             icon = Icons.Filled.Add,
@@ -38,13 +42,17 @@ fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: Na
     }
 
     val content: @Composable () -> Unit = {
-        when(viewModel.uiState.value) {
-            UiState.NoDialog -> { EmergencyContactsColumn() }
+        when (viewModel.uiState.value) {
+            UiState.NoDialog -> {
+                EmergencyContactsColumn()
+            }
+
             UiState.AddDialog ->
                 AddContactDialog(
-                viewModel = viewModel,
-                onDismissRequest = { viewModel.updateUiState(UiState.NoDialog) }
-            )
+                    viewModel = viewModel,
+                    onDismissRequest = { viewModel.updateUiState(UiState.NoDialog) }
+                )
+
             UiState.EditDialog -> {
                 IndividualContactDialog(
                     contact = viewModel.selectedContact,
@@ -54,13 +62,17 @@ fun EmergencyContactScreen(navController: NavHostController, navBarViewModel: Na
                     }
                 )
             }
+
+            UiState.DeleteDialog -> {
+                DeleteContactDialog(contactToBeDeleted = viewModel.selectedContact)
+            }
         }
     }
 
     val bottomBar: @Composable () -> Unit = {
         NavBar(navController = navController, navBarViewModel = navBarViewModel)
     }
-    
+
     TitleContentNavScaffold(
         topBar = { topBar() },
         floatingActionButton = { floatingActionButton() },

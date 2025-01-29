@@ -21,12 +21,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.quicksos.data.db.entity.Contact
+import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
+import com.example.quicksos.ui.screens.emergencyContacts.viewModel.UiState
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IndividualContactDialog(contact: Contact?, onDismissRequest: () -> Unit) {
+    val viewModel: EmergencyContactsViewModel = viewModel()
+
     Dialog(
         onDismissRequest = { onDismissRequest() }
     ) {
@@ -59,7 +64,12 @@ fun IndividualContactDialog(contact: Contact?, onDismissRequest: () -> Unit) {
                     Icon(
                         Icons.Default.Delete,
                         contentDescription = "delete contact",
-                        modifier = Modifier.padding(horizontal = 2.dp)
+                        modifier = Modifier
+                            .padding(horizontal = 2.dp)
+                            .clickable {
+                                viewModel.selectedContact = contact
+                                viewModel.updateUiState(UiState.DeleteDialog)
+                            }
                     )
                     //Close button
                     Icon(
