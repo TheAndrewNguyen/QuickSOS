@@ -19,7 +19,7 @@ interface ContactDao {
     @Query("DELETE FROM contact WHERE uid = :uid")
     fun delete(uid: Int)
 
-    //sorting contacts ascending
-    @Query("SELECT * FROM contact ORDER BY first_name COLLATE NOCASE ASC")
+    //return list of contact sorted in ascending order by first name
+    @Query("SELECT * FROM contact ORDER BY first_name, last_name COLLATE NOCASE ASC")
     fun sortByNameAsc(): List<Contact>
 }
