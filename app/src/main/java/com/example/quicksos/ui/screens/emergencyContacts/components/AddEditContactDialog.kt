@@ -70,7 +70,7 @@ fun CustomDecisionButton(text: String, onClick: () -> Unit) {
 }
 
 @Composable
-fun AddContactDialog(
+fun AddEditContactDialog(
     viewModel: EmergencyContactsViewModel = hiltViewModel(),
     onDismissRequest: () -> Unit,
 ) {
@@ -163,7 +163,7 @@ fun AddContactDialog(
 @Composable
 fun AddContactDialogPreview() {
     QuickSOSTheme {
-        AddContactDialog(
+        AddEditContactDialog(
             onDismissRequest = {},
         )
     }

@@ -24,13 +24,13 @@ fun DeleteContactDialog(contactToBeDeleted: Contact?) {
             Text(text = "Are your sure you want to delete ${contactToBeDeleted?.firstName} ${contactToBeDeleted?.lastName} from your emergency contacts?")
         },
         onDismissRequest = {
-            viewModel.updateUiState(UiState.BaseScreen)
+            viewModel.updateUiState(UiState.BaseContent)
         },
         confirmButton = {
             TextButton(
                 onClick = {
                     viewModel.deleteContact(contactToBeDeleted!!)
-                    viewModel.updateUiState(UiState.BaseScreen)
+                    viewModel.updateUiState(UiState.BaseContent)
                 }
             ) {
                 Text(
@@ -42,7 +42,7 @@ fun DeleteContactDialog(contactToBeDeleted: Contact?) {
         dismissButton = {
             TextButton(
                 onClick = {
-                    viewModel.updateUiState(UiState.BaseScreen)
+                    viewModel.updateUiState(UiState.BaseContent)
                 }
             ) {
                 Text(

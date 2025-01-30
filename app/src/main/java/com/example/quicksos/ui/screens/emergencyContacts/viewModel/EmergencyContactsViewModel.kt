@@ -19,7 +19,7 @@ class EmergencyContactsViewModel @Inject constructor(
         private set
 
     //ui state of screen
-    var uiState = mutableStateOf<UiState>(UiState.BaseScreen)
+    var uiState = mutableStateOf<UiState>(UiState.BaseContent)
         private set
 
     fun updateUiState(state: UiState) {
@@ -28,7 +28,7 @@ class EmergencyContactsViewModel @Inject constructor(
 
     //DIALOG FIELDS
     //DIALOG title
-    var dialogTitle by mutableStateOf("")
+    var dialogTitle by mutableStateOf("Add Contact")
         private set
 
     fun updateDialogTitle(title: String) {
@@ -119,7 +119,8 @@ class EmergencyContactsViewModel @Inject constructor(
 }
 
 sealed class UiState() {
-    object BaseScreen : UiState()
+    object BaseContent : UiState()
+    object SearchContent : UiState()
     object AddContactDialog : UiState()
     object ShowContactDialog : UiState()
     object EditContactDialog: UiState()

@@ -10,7 +10,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.quicksos.ui.navigation.NavigationViewModel
-import com.example.quicksos.ui.screens.emergencyContacts.components.AddContactDialog
+import com.example.quicksos.ui.screens.emergencyContacts.components.AddEditContactDialog
 import com.example.quicksos.ui.screens.emergencyContacts.components.DeleteContactDialog
 import com.example.quicksos.ui.screens.emergencyContacts.components.EmergencyContactsColumn
 import com.example.quicksos.ui.screens.emergencyContacts.components.SearchBar
@@ -43,22 +43,28 @@ fun EmergencyContactScreen(
 
     val content: @Composable () -> Unit = {
         when (viewModel.uiState.value) {
-            UiState.BaseScreen -> {
+            UiState.BaseContent -> {
+                EmergencyContactsColumn()
+            }
+
+            //TODO: Implement
+            UiState.SearchContent -> {
                 EmergencyContactsColumn()
             }
 
             UiState.AddContactDialog ->
-                AddContactDialog(
+                AddEditContactDialog(
                     viewModel = viewModel,
-                    onDismissRequest = { viewModel.updateUiState(UiState.BaseScreen) }
+                    onDismissRequest = { viewModel.updateUiState(UiState.BaseContent) }
                 )
 
             UiState.ShowContactDialog -> {
                 IndividualContactDialog(
                     contact = viewModel.selectedContact,
                     onDismissRequest = {
-                        viewModel.updateUiState(UiState.BaseScreen)
+                        viewModel.updateUiState(UiState.BaseContent)
                         viewModel.selectedContact = null
+                        viewModel.resetEntryFieldValues()
                     }
                 )
             }
@@ -67,10 +73,10 @@ fun EmergencyContactScreen(
                 viewModel.updateFirstName(viewModel.selectedContact?.firstName.toString())
                 viewModel.updateLastName(viewModel.selectedContact?.lastName.toString())
                 viewModel.updatePhoneNumber(viewModel.selectedContact?.phoneNumber.toString())
-                AddContactDialog(
+                AddEditContactDialog(
                     viewModel = viewModel,
                     onDismissRequest = {
-                        viewModel.updateUiState(UiState.BaseScreen)
+                        viewModel.updateUiState(UiState.BaseContent)
                         viewModel.selectedContact = null
                         viewModel.resetEntryFieldValues()
                     }
