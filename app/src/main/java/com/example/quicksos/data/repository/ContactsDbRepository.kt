@@ -5,12 +5,6 @@ import com.example.quicksos.data.db.entity.Contact
 import javax.inject.Inject
 
 class ContactsDbRepository @Inject constructor(private val dao: ContactDao) {
-    fun getAllContacts(): List<Contact> = dao.getAll()
-
-    //getting the exact contact form the search
-    fun getExactContact(firstName: String, lastName: String, phoneNumber: String): List<Contact> =
-        dao.getExact(firstName, lastName, phoneNumber)
-
     //insert a new contact
     fun insertContact(contact: Contact) = dao.insert(contact)
 
@@ -27,6 +21,6 @@ class ContactsDbRepository @Inject constructor(private val dao: ContactDao) {
         )
     }
 
-    //sort inputs
+    // return table sorted
     fun sortByNameAsc(): List<Contact> = dao.sortByNameAsc()
 }

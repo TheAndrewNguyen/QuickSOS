@@ -7,15 +7,7 @@ import com.example.quicksos.data.db.entity.Contact
 
 @Dao
 interface ContactDao {
-    //get all contacts
-    @Query("SELECT * FROM contact")
-    fun getAll(): List<Contact>
-
-    //get contact with exact match
-    @Query("SELECT * FROM contact WHERE first_name = :firstName AND last_name = :lastName AND phone_number = :phoneNumber")
-    fun getExact(firstName: String, lastName: String, phoneNumber: String) : List<Contact>
-
-    //Insert Contact
+    //Add Contact
     @Insert
     fun insert(vararg contact: Contact)
 
