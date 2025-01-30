@@ -53,7 +53,7 @@ fun EmergencyContactScreen(
                     onDismissRequest = { viewModel.updateUiState(UiState.NoDialog) }
                 )
 
-            UiState.EditDialog -> {
+            UiState.ShowDialog -> {
                 IndividualContactDialog(
                     contact = viewModel.selectedContact,
                     onDismissRequest = {
@@ -61,6 +61,10 @@ fun EmergencyContactScreen(
                         viewModel.selectedContact = null
                     }
                 )
+            }
+
+            UiState.EditDialog -> {
+                //TODO: implement edit dialog
             }
 
             UiState.DeleteDialog -> {

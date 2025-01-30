@@ -47,7 +47,7 @@ fun EmergencyContactsColumn() {
                 viewModel.selectedContact = contact
 
                 //update ui state
-                viewModel.updateUiState(UiState.EditDialog)
+                viewModel.updateUiState(UiState.ShowDialog)
             }
         }
     }

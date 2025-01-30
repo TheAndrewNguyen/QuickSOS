@@ -103,6 +103,7 @@ class EmergencyContactsViewModel @Inject constructor(
 sealed class UiState() {
     object NoDialog : UiState()
     object AddDialog : UiState()
+    object ShowDialog : UiState()
     object EditDialog: UiState()
     object DeleteDialog: UiState()
 }
