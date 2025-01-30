@@ -57,7 +57,9 @@ fun IndividualContactDialog(contact: Contact?, onDismissRequest: () -> Unit) {
                         modifier = Modifier
                             .padding(horizontal = 2.dp)
                             .clickable {
-                                //TODO: edit contact
+                                viewModel.selectedContact = contact
+                                viewModel.updateDialogTitle("Edit Contact")
+                                viewModel.updateUiState(UiState.EditDialog)
                             }
                     )
                     //delete contact button

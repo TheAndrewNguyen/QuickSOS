@@ -64,7 +64,17 @@ fun EmergencyContactScreen(
             }
 
             UiState.EditDialog -> {
-                //TODO: implement edit dialog
+                viewModel.updateFirstName(viewModel.selectedContact?.firstName.toString())
+                viewModel.updateLastName(viewModel.selectedContact?.lastName.toString())
+                viewModel.updatePhoneNumber(viewModel.selectedContact?.phoneNumber.toString())
+                AddContactDialog(
+                    viewModel = viewModel,
+                    onDismissRequest = {
+                        viewModel.updateUiState(UiState.NoDialog)
+                        viewModel.selectedContact = null
+                        viewModel.resetEntryFieldValues()
+                    }
+                )
             }
 
             UiState.DeleteDialog -> {

@@ -91,8 +91,9 @@ fun AddContactDialog(
                     .fillMaxSize()
                     .padding(8.dp)
             ) {
+                //title
                 Text(
-                    text = "Add Contact",
+                    text = viewModel.dialogTitle,
                     style = MaterialTheme.typography.titleLarge
                 )
                 //first name entry field

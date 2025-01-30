@@ -4,19 +4,29 @@ import com.example.quicksos.data.db.dao.ContactDao
 import com.example.quicksos.data.db.entity.Contact
 import javax.inject.Inject
 
-class ContactsDbRepository @Inject constructor(private val dao : ContactDao) {
-    fun getAllContacts() : List<Contact> = dao.getAll()
+class ContactsDbRepository @Inject constructor(private val dao: ContactDao) {
+    fun getAllContacts(): List<Contact> = dao.getAll()
 
     //getting the exact contact form the search
-    fun getExactContact(firstName: String, lastName: String, phoneNumber: String) : List<Contact>
-    = dao.getExact(firstName, lastName, phoneNumber)
+    fun getExactContact(firstName: String, lastName: String, phoneNumber: String): List<Contact> =
+        dao.getExact(firstName, lastName, phoneNumber)
 
     //insert a new contact
     fun insertContact(contact: Contact) = dao.insert(contact)
 
     //delete contact
-    fun deleteContact(contact: Contact) =  dao.delete(contact.uid)
+    fun deleteContact(contact: Contact) = dao.delete(contact.uid)
+
+    //update contact
+    fun updateContact(uid: Int, contact: Contact) {
+        dao.update(
+            uid,
+            contact.firstName.toString(),
+            contact.lastName.toString(),
+            contact.phoneNumber.toString()
+        )
+    }
 
     //sort inputs
-    fun sortByNameAsc() : List<Contact> = dao.sortByNameAsc()
+    fun sortByNameAsc(): List<Contact> = dao.sortByNameAsc()
 }

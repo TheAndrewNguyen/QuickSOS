@@ -26,6 +26,14 @@ class EmergencyContactsViewModel @Inject constructor(
         uiState.value = state
     }
 
+    //DIALOG FIELDS
+    //DIALOG title
+    var dialogTitle by mutableStateOf("")
+        private set
+
+    fun updateDialogTitle(title: String) {
+        dialogTitle = title
+    }
     //first name Entry Field
     var currentFirstName by mutableStateOf("")
         private set
@@ -60,6 +68,7 @@ class EmergencyContactsViewModel @Inject constructor(
         updateFirstName("")
         updateLastName("")
         updatePhoneNumber("")
+        updateDialogTitle("Add Contact")
         selectedContact = null
         entryFieldValidInput = true
     }
@@ -81,11 +90,19 @@ class EmergencyContactsViewModel @Inject constructor(
             phoneNumber = currentPhoneNumber.toString()
         )
 
-        //send data to the backend
-        repository.insertContact(data)
+        if(uiState.value == UiState.AddDialog) {
+            repository.insertContact(data)
+            resetEntryFieldValues()
+            return
+        }
 
-        //reset the values on the front end
-        resetEntryFieldValues()
+        //if updating a contact
+        if(uiState.value == UiState.EditDialog) {
+            val oldContactUid = selectedContact?.uid
+            repository.updateContact(oldContactUid!!,data)
+            resetEntryFieldValues()
+            return
+        }
     }
 
     //delete teh contact
