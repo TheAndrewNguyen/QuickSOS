@@ -36,48 +36,48 @@ fun EmergencyContactScreen(
     val floatingActionButton: @Composable () -> Unit = {
         CustomFloatingActionButton(
             icon = Icons.Filled.Add,
-            onClick = { viewModel.updateUiState(UiState.AddDialog) },
+            onClick = { viewModel.updateUiState(UiState.AddContactDialog) },
             contentDescription = "Add Emergency Contact"
         )
     }
 
     val content: @Composable () -> Unit = {
         when (viewModel.uiState.value) {
-            UiState.NoDialog -> {
+            UiState.BaseScreen -> {
                 EmergencyContactsColumn()
             }
 
-            UiState.AddDialog ->
+            UiState.AddContactDialog ->
                 AddContactDialog(
                     viewModel = viewModel,
-                    onDismissRequest = { viewModel.updateUiState(UiState.NoDialog) }
+                    onDismissRequest = { viewModel.updateUiState(UiState.BaseScreen) }
                 )
 
-            UiState.ShowDialog -> {
+            UiState.ShowContactDialog -> {
                 IndividualContactDialog(
                     contact = viewModel.selectedContact,
                     onDismissRequest = {
-                        viewModel.updateUiState(UiState.NoDialog)
+                        viewModel.updateUiState(UiState.BaseScreen)
                         viewModel.selectedContact = null
                     }
                 )
             }
 
-            UiState.EditDialog -> {
+            UiState.EditContactDialog -> {
                 viewModel.updateFirstName(viewModel.selectedContact?.firstName.toString())
                 viewModel.updateLastName(viewModel.selectedContact?.lastName.toString())
                 viewModel.updatePhoneNumber(viewModel.selectedContact?.phoneNumber.toString())
                 AddContactDialog(
                     viewModel = viewModel,
                     onDismissRequest = {
-                        viewModel.updateUiState(UiState.NoDialog)
+                        viewModel.updateUiState(UiState.BaseScreen)
                         viewModel.selectedContact = null
                         viewModel.resetEntryFieldValues()
                     }
                 )
             }
 
-            UiState.DeleteDialog -> {
+            UiState.DeleteContactDialog -> {
                 DeleteContactDialog(contactToBeDeleted = viewModel.selectedContact)
             }
         }

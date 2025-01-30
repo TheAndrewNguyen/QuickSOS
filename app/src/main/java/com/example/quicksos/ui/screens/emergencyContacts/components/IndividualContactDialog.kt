@@ -59,7 +59,7 @@ fun IndividualContactDialog(contact: Contact?, onDismissRequest: () -> Unit) {
                             .clickable {
                                 viewModel.selectedContact = contact
                                 viewModel.updateDialogTitle("Edit Contact")
-                                viewModel.updateUiState(UiState.EditDialog)
+                                viewModel.updateUiState(UiState.EditContactDialog)
                             }
                     )
                     //delete contact button
@@ -70,7 +70,7 @@ fun IndividualContactDialog(contact: Contact?, onDismissRequest: () -> Unit) {
                             .padding(horizontal = 2.dp)
                             .clickable {
                                 viewModel.selectedContact = contact
-                                viewModel.updateUiState(UiState.DeleteDialog)
+                                viewModel.updateUiState(UiState.DeleteContactDialog)
                             }
                     )
                     //Close button

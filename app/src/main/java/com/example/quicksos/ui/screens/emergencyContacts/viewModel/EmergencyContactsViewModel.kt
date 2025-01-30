@@ -19,7 +19,7 @@ class EmergencyContactsViewModel @Inject constructor(
         private set
 
     //ui state of screen
-    var uiState = mutableStateOf<UiState>(UiState.NoDialog)
+    var uiState = mutableStateOf<UiState>(UiState.BaseScreen)
         private set
 
     fun updateUiState(state: UiState) {
@@ -90,14 +90,14 @@ class EmergencyContactsViewModel @Inject constructor(
             phoneNumber = currentPhoneNumber.toString()
         )
 
-        if(uiState.value == UiState.AddDialog) {
+        if(uiState.value == UiState.AddContactDialog) {
             repository.insertContact(data)
             resetEntryFieldValues()
             return
         }
 
         //if updating a contact
-        if(uiState.value == UiState.EditDialog) {
+        if(uiState.value == UiState.EditContactDialog) {
             val oldContactUid = selectedContact?.uid
             repository.updateContact(oldContactUid!!,data)
             resetEntryFieldValues()
@@ -112,15 +112,16 @@ class EmergencyContactsViewModel @Inject constructor(
         updateData()
     }
 
+    //update data form the backend
     fun updateData() {
         contactsList = repository.sortByNameAsc()
     }
 }
 
 sealed class UiState() {
-    object NoDialog : UiState()
-    object AddDialog : UiState()
-    object ShowDialog : UiState()
-    object EditDialog: UiState()
-    object DeleteDialog: UiState()
+    object BaseScreen : UiState()
+    object AddContactDialog : UiState()
+    object ShowContactDialog : UiState()
+    object EditContactDialog: UiState()
+    object DeleteContactDialog: UiState()
 }
