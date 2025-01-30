@@ -22,4 +22,8 @@ interface ContactDao {
     //return list of contact sorted in ascending order by first name
     @Query("SELECT * FROM contact ORDER BY first_name, last_name COLLATE NOCASE ASC")
     fun sortByNameAsc(): List<Contact>
+
+    //returns list of contacts that match query
+    @Query("SELECT * FROM contact WHERE first_name COLLATE NOCASE LIKE :query OR last_name COLLATE NOCASE LIKE :query OR phone_number COLLATE NOCASE LIKE :query")
+    fun search(query: String): List<Contact>
 }
