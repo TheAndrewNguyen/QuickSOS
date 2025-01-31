@@ -1,5 +1,6 @@
 package com.example.quicksos.ui.screens.emergencyContacts.components
 
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,7 +12,10 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -20,6 +24,7 @@ import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyCont
 @Composable
 fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
     val viewModel: EmergencyContactsViewModel = hiltViewModel()
+    val searchBarFocus = remember { FocusRequester() }
 
     OutlinedTextField(
         value = viewModel.searchbarContent,
@@ -39,6 +44,8 @@ fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
         modifier = modifier
             .padding(horizontal = 16.dp, vertical = 24.dp)
             .fillMaxWidth()
+            .focusRequester(searchBarFocus)
+            .focusable()
     )
 }
 
