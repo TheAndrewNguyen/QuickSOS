@@ -25,5 +25,5 @@ class ContactsDbRepository @Inject constructor(private val dao: ContactDao) {
     fun sortByNameAsc(): List<Contact> = dao.sortByNameAsc()
 
     //return search results
-    fun search(query: String): List<Contact> = dao.search(query)
+    fun searchContacts(query: String): List<Contact> = dao.search(query)
 }

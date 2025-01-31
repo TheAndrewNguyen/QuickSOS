@@ -24,6 +24,6 @@ interface ContactDao {
     fun sortByNameAsc(): List<Contact>
 
     //returns list of contacts that match query
-    @Query("SELECT * FROM contact WHERE first_name COLLATE NOCASE LIKE :query OR last_name COLLATE NOCASE LIKE :query OR phone_number COLLATE NOCASE LIKE :query")
+    @Query("SELECT * FROM contact WHERE first_name COLLATE NOCASE LIKE '%' || :query || '%' OR last_name COLLATE NOCASE LIKE '%' || :query || '%' OR phone_number COLLATE NOCASE LIKE '%' || :query || '%'")
     fun search(query: String): List<Contact>
 }

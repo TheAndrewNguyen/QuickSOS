@@ -47,11 +47,6 @@ fun EmergencyContactScreen(
                 EmergencyContactsColumn()
             }
 
-            //TODO: Implement
-            UiState.SearchContent -> {
-                EmergencyContactsColumn()
-            }
-
             UiState.AddContactDialog ->
                 AddEditContactDialog(
                     viewModel = viewModel,

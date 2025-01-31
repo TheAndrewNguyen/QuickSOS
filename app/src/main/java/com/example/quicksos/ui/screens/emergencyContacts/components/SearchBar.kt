@@ -12,12 +12,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
 
 @Composable
 fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
+    val viewModel: EmergencyContactsViewModel = hiltViewModel()
+
     OutlinedTextField(
-        value = "",
-        onValueChange = {},
+        value = viewModel.searchbarContent,
+        onValueChange = { viewModel.updateSearchContent(it) },
         label = { Text(label) },
         singleLine = true,
         leadingIcon = { Icon(imageVector = Icons.Filled.Search, contentDescription = "Search") },

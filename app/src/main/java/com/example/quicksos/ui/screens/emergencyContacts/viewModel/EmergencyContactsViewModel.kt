@@ -14,11 +14,12 @@ import javax.inject.Inject
 class EmergencyContactsViewModel @Inject constructor(
     private val repository: ContactsDbRepository
 ) : ViewModel()  {
-    //list to be presented
+
+    //currentCONTACTLIST
     var contactsList by mutableStateOf(emptyList<Contact>())
         private set
 
-    //ui state of screen
+    //UI STATE FOR SCREEN
     var uiState = mutableStateOf<UiState>(UiState.BaseContent)
         private set
 
@@ -26,7 +27,17 @@ class EmergencyContactsViewModel @Inject constructor(
         uiState.value = state
     }
 
+    //SEARCH BAR
+    var searchbarContent by mutableStateOf("")
+        private set
+
+    fun updateSearchContent(content: String) {
+        searchbarContent = content
+        updateData()
+    }
+
     //DIALOG FIELDS
+
     //DIALOG title
     var dialogTitle by mutableStateOf("Add Contact")
         private set
@@ -114,13 +125,16 @@ class EmergencyContactsViewModel @Inject constructor(
 
     //update data form the backend
     fun updateData() {
-        contactsList = repository.sortByNameAsc()
+        if(searchbarContent == "") {
+            contactsList = repository.sortByNameAsc()
+        } else {
+            contactsList = repository.searchContacts(searchbarContent)
+        }
     }
 }
 
 sealed class UiState() {
     object BaseContent : UiState()
-    object SearchContent : UiState()
     object AddContactDialog : UiState()
     object ShowContactDialog : UiState()
     object EditContactDialog: UiState()
