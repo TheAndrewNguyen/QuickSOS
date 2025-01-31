@@ -30,16 +30,23 @@ fun EmergencyContactsColumn() {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        //if there are no contacts display message
+        //if there are no contacts or no contacts found in the search display message
         if (viewModel.contactsList.isEmpty()) {
             item {
                 Text(
-                    text = "No Emergency Contacts",
+                    text =
+                    if(viewModel.searchbarContent == "") {
+                        "No Emergency Contacts"
+                    } else {
+                        "No Contacts Found for \"${viewModel.searchbarContent}\""
+                    },
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(16.dp)
                 )
             }
         }
+
         //if there are contacts populate the contact cards
         items(viewModel.contactsList.size) { index ->
             EmergencyContactCard(contact = viewModel.contactsList[index]) { contact ->
