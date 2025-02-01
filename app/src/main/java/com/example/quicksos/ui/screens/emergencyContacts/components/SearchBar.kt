@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -40,7 +41,8 @@ fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
         singleLine = true,
         leadingIcon = {
             Icon(
-                imageVector = Icons.Filled.Search, contentDescription = "Search"
+                imageVector = if(searchBarIsFocused.value) Icons.AutoMirrored.Filled.ArrowBack else Icons.Filled.Search,
+                contentDescription = if(searchBarIsFocused.value) "Back Arrow" else "Search"
             )
         },
         shape = RoundedCornerShape(10.dp),
