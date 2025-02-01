@@ -1,6 +1,6 @@
 package com.example.quicksos.ui.screens.emergencyContacts.components
 
-import androidx.compose.foundation.focusable
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,19 +12,24 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
 
+//TODO: Add back button on focused mode, back button unfocuses the composable
 @Composable
 fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
     val viewModel: EmergencyContactsViewModel = hiltViewModel()
-    val searchBarFocus = remember { FocusRequester() }
+    val searchBarFocusManager = remember { FocusRequester() }
+
+    //variable to track if search bar is focused or not
+    var searchBarIsFocused = remember {mutableStateOf(false)}
 
     OutlinedTextField(
         value = viewModel.searchbarContent,
@@ -33,7 +38,11 @@ fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
         },
         label = { Text(label) },
         singleLine = true,
-        leadingIcon = { Icon(imageVector = Icons.Filled.Search, contentDescription = "Search") },
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Filled.Search, contentDescription = "Search"
+            )
+        },
         shape = RoundedCornerShape(10.dp),
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = MaterialTheme.colorScheme.onSurface,
@@ -44,8 +53,12 @@ fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
         modifier = modifier
             .padding(horizontal = 16.dp, vertical = 24.dp)
             .fillMaxWidth()
-            .focusRequester(searchBarFocus)
-            .focusable()
+            .onFocusChanged { focusState ->
+                Log.d("searchBarFocus", focusState.isFocused.toString())
+                searchBarIsFocused.value = focusState.isFocused
+            }
+//            .focusRequester(searchBarFocusManager)
+//            .focusable()
     )
 }
 
