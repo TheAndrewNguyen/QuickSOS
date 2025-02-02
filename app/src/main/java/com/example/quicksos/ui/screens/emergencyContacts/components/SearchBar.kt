@@ -1,6 +1,5 @@
 package com.example.quicksos.ui.screens.emergencyContacts.components
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -51,7 +50,7 @@ fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
                 contentDescription = if(searchBarIsFocused.value) "Back Arrow" else "Search",
                 modifier = Modifier.clickable { //when click
                     if(searchBarIsFocused.value) {
-                        Log.d("searchBarFocus", "called to release focus")
+                        viewModel.updateSearchContent("") //clear search content on back button
                         focusManager.clearFocus()
                     } else {
                         null
@@ -70,8 +69,8 @@ fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
             .padding(horizontal = 16.dp, vertical = 24.dp)
             .fillMaxWidth()
             .focusRequester(searchBarFocusRequestor)
-            .onFocusChanged { focusState -> //state management for search bar
-                Log.d("searchBarFocus", focusState.isFocused.toString())
+            //state management for search bar
+            .onFocusChanged { focusState ->
                 searchBarIsFocused.value = focusState.isFocused
             }
     )
