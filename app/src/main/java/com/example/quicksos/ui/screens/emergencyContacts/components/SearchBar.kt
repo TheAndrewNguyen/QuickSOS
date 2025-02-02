@@ -1,6 +1,7 @@
 package com.example.quicksos.ui.screens.emergencyContacts.components
 
 import android.util.Log
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,7 +18,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -27,7 +30,10 @@ import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyCont
 @Composable
 fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
     val viewModel: EmergencyContactsViewModel = hiltViewModel()
-    val searchBarFocusManager = remember { FocusRequester() }
+
+    //focus manager
+    val searchBarFocusRequestor = remember { FocusRequester() }
+    val focusManager = LocalFocusManager.current
 
     //variable to track if search bar is focused or not
     var searchBarIsFocused = remember {mutableStateOf(false)}
@@ -42,7 +48,15 @@ fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
         leadingIcon = {
             Icon(
                 imageVector = if(searchBarIsFocused.value) Icons.AutoMirrored.Filled.ArrowBack else Icons.Filled.Search,
-                contentDescription = if(searchBarIsFocused.value) "Back Arrow" else "Search"
+                contentDescription = if(searchBarIsFocused.value) "Back Arrow" else "Search",
+                modifier = Modifier.clickable { //when click
+                    if(searchBarIsFocused.value) {
+                        Log.d("searchBarFocus", "called to release focus")
+                        focusManager.clearFocus()
+                    } else {
+                        null
+                    }
+                }
             )
         },
         shape = RoundedCornerShape(10.dp),
@@ -55,12 +69,11 @@ fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
         modifier = modifier
             .padding(horizontal = 16.dp, vertical = 24.dp)
             .fillMaxWidth()
-            .onFocusChanged { focusState ->
+            .focusRequester(searchBarFocusRequestor)
+            .onFocusChanged { focusState -> //state management for search bar
                 Log.d("searchBarFocus", focusState.isFocused.toString())
                 searchBarIsFocused.value = focusState.isFocused
             }
-//            .focusRequester(searchBarFocusManager)
-//            .focusable()
     )
 }
 
