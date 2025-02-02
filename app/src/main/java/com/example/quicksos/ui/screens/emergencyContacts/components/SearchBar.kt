@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyContactsViewModel
 
-//TODO: Add back button on focused mode, back button unfocuses the composable
 @Composable
 fun SearchBar(modifier: Modifier = Modifier, label: String = "") {
     val viewModel: EmergencyContactsViewModel = hiltViewModel()
