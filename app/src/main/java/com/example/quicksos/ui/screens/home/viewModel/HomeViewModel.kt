@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.example.quicksos.ui.screens.home.data.ActionButtonDataModel
 import com.example.quicksos.ui.screens.home.data.actionButtonData
 
-
 class HomeViewModel : ViewModel() {
     var actionButtonData = mutableListOf<ActionButtonDataModel>()
 
