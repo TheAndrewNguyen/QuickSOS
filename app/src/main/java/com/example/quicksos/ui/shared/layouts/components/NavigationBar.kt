@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.quicksos.ui.navigation.NavigationViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
@@ -41,11 +41,11 @@ val unselectedIcons = listOf(
 )
 
 @Composable
-fun NavBar(modifier: Modifier = Modifier, navController: NavController, navBarViewModel: NavigationViewModel = viewModel()) {
+fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
 
-    val viewModel = navBarViewModel
+    val viewModel: NavigationViewModel = hiltViewModel()
+
     val selectedIndex = viewModel.selectedNavIndex.intValue
-    Log.d("NavBar", "Selected Index on compose side: $selectedIndex")
 
     val navActions = listOf(
         { navController.navigate("home") },
@@ -86,6 +86,6 @@ fun NavBar(modifier: Modifier = Modifier, navController: NavController, navBarVi
 fun NavBarPreview() {
     QuickSOSTheme {
         val navController = NavController(LocalContext.current)
-        NavBar(navController = navController, navBarViewModel = viewModel())
+        NavBar(navController = navController)
     }
 }

@@ -5,6 +5,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -20,6 +21,7 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 @Composable
 fun SOSHomeScreen(navController: NavController, navigationViewModel: NavigationViewModel = viewModel()) {
     val viewModel: HomeViewModel = viewModel()
+    val navViewModel: NavigationViewModel = hiltViewModel()
 
     //action button data
     val context = LocalContext.current
@@ -42,7 +44,7 @@ fun SOSHomeScreen(navController: NavController, navigationViewModel: NavigationV
     }
 
     val bottomBar: @Composable () -> Unit = {
-        NavBar(navController = navController, navBarViewModel = navigationViewModel)
+        NavBar(navController = navController)
     }
 
     TitleContentNavScaffold(

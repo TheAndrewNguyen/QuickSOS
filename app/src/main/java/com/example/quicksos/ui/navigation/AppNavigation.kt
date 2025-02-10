@@ -14,17 +14,16 @@ import com.example.quicksos.ui.screens.settings.SettingsScreen
 @Composable
 fun AppNavigation(modifier: Modifier) {
     val navController = rememberNavController()
-    val navViewModel = NavigationViewModel()
 
     Box(modifier = modifier) {
         NavHost(navController = navController, startDestination = Screen.Home.route) {
             composable(Screen.Home.route) {
-                SOSHomeScreen(navController, navViewModel)
+                SOSHomeScreen(navController)
             }
             composable(Screen.EmergencyContacts.route) {
-                EmergencyContactScreen(navController, navViewModel)
+                EmergencyContactScreen(navController)
             }
-            composable(Screen.Location.route) { LocationScreen(navController, navViewModel) }
+            composable(Screen.Location.route) { LocationScreen(navController) }
             composable(Screen.Settings.route) { SettingsScreen() }
         }
     }

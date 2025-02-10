@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.quicksos.ui.navigation.NavigationViewModel
 import com.example.quicksos.ui.screens.location.components.LocationScreenContent
@@ -17,9 +17,10 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
 fun LocationScreen(
-    navController: NavController,
-    navigationViewModel: NavigationViewModel = viewModel()
+    navController: NavController
 ) {
+    val navViewModel: NavigationViewModel = hiltViewModel()
+
     val title: @Composable () -> Unit = {
         TitleTextAlign(title = "Current Location")
     }
@@ -29,11 +30,11 @@ fun LocationScreen(
     }
 
     val content: @Composable () -> Unit = {
-        LocationScreenContent(navController, navigationViewModel)
+        LocationScreenContent(navController, navViewModel)
     }
 
     val bottomBar: @Composable () -> Unit = {
-        NavBar(navController = navController, navBarViewModel = navigationViewModel)
+        NavBar(navController = navController)
     }
 
     TitleContentNavScaffold(

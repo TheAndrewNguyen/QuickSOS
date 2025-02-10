@@ -3,8 +3,11 @@ package com.example.quicksos.ui.navigation
 
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class NavigationViewModel : ViewModel() {
+@HiltViewModel
+class NavigationViewModel @Inject constructor() : ViewModel() {
 
     var selectedNavIndex = mutableIntStateOf(0)
         private set
