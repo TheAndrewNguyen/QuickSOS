@@ -6,11 +6,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.quicksos.ui.navigation.NavBar
 import com.example.quicksos.ui.navigation.NavigationViewModel
 import com.example.quicksos.ui.screens.location.components.LocationScreenContent
 import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.layouts.components.CustomTopAppBar
-import com.example.quicksos.ui.shared.layouts.components.NavBar
 import com.example.quicksos.ui.shared.layouts.components.TitleTextAlign
 import com.example.quicksos.ui.theme.QuickSOSTheme
 

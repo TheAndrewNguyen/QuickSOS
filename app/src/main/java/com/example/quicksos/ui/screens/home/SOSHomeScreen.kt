@@ -14,7 +14,7 @@ import com.example.quicksos.ui.screens.home.components.ActionButtonColumn
 import com.example.quicksos.ui.screens.home.viewModel.HomeViewModel
 import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.layouts.components.CustomTopAppBar
-import com.example.quicksos.ui.shared.layouts.components.NavBar
+import com.example.quicksos.ui.navigation.NavBar
 import com.example.quicksos.ui.shared.layouts.components.TitleTextAlign
 import com.example.quicksos.ui.theme.QuickSOSTheme
 

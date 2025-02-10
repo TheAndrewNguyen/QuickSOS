@@ -17,7 +17,7 @@ import com.example.quicksos.ui.screens.emergencyContacts.viewModel.EmergencyCont
 import com.example.quicksos.ui.screens.emergencyContacts.viewModel.UiState
 import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.layouts.components.CustomFloatingActionButton
-import com.example.quicksos.ui.shared.layouts.components.NavBar
+import com.example.quicksos.ui.navigation.NavBar
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable

@@ -1,4 +1,4 @@
-package com.example.quicksos.ui.shared.layouts.components
+package com.example.quicksos.ui.navigation
 
 import android.util.Log
 import androidx.compose.material.icons.Icons
@@ -21,7 +21,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.quicksos.ui.navigation.NavigationViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 //items for NavBar
