@@ -8,7 +8,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.quicksos.ui.navigation.NavigationViewModel
 import com.example.quicksos.ui.screens.emergencyContacts.components.AddEditContactDialog
 import com.example.quicksos.ui.screens.emergencyContacts.components.DeleteContactDialog
 import com.example.quicksos.ui.screens.emergencyContacts.components.EmergencyContactsColumn
@@ -26,7 +25,6 @@ fun EmergencyContactScreen(
 ) {
 
     val viewModel: EmergencyContactsViewModel = hiltViewModel()
-    val navViewModel: NavigationViewModel = hiltViewModel()
 
     val topBar: @Composable () -> Unit = {
         SearchBar(label = "Search Emergency Contacts")

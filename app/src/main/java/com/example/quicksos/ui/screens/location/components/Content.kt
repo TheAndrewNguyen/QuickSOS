@@ -17,7 +17,6 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.quicksos.ui.navigation.NavigationViewModel
 
 @Composable
 fun InformationText(modifier: Modifier = Modifier, text: String) {
@@ -59,12 +58,10 @@ fun LocationInfo(modifier: Modifier = Modifier) {
 fun HelpButton(
     modifier: Modifier = Modifier,
     navController: NavController,
-    navViewModel: NavigationViewModel
 ) {
     Button(
         onClick = {
             navController.navigate("Home")
-            navViewModel.navBarIndexSet(0)
         },
         colors = ButtonDefaults.buttonColors(),
         modifier = modifier
@@ -79,7 +76,7 @@ fun HelpButton(
 }
 
 @Composable
-fun LocationScreenContent(navController: NavController, navViewModel: NavigationViewModel) {
+fun LocationScreenContent(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -90,7 +87,6 @@ fun LocationScreenContent(navController: NavController, navViewModel: Navigation
         HelpButton(
             modifier = Modifier.weight(0.2f), // Adjust weight for button size consistency
             navController = navController,
-            navViewModel = navViewModel
         )
     }
 }
