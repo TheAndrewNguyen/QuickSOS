@@ -1,6 +1,5 @@
 package com.example.quicksos.ui.navigation
 
-import android.util.Log
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Home
@@ -43,8 +42,7 @@ val unselectedIcons = listOf(
 fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
 
     val viewModel: NavigationViewModel = hiltViewModel()
-
-    val selectedIndex = viewModel.selectedNavIndex.intValue
+    var selectedIndex = viewModel.selectedNavIndex
 
     val navActions = listOf(
         { navController.navigate("home") },
@@ -58,7 +56,7 @@ fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
             NavigationBarItem(
                 icon = {
                     Icon(
-                        if (selectedIndex == index) selectedIcons[index] else unselectedIcons[index],
+                        if (selectedIndex.intValue == index) selectedIcons[index] else unselectedIcons[index],
                         contentDescription = item
                     )
                 },
@@ -68,11 +66,9 @@ fun NavBar(modifier: Modifier = Modifier, navController: NavController) {
                         textAlign = TextAlign.Center
                     )
                 },
-                selected = selectedIndex == index,
+                selected = selectedIndex.intValue == index,
                 onClick = {
-                    Log.d("NavBar", "Clicked on: $index")
-                    navActions[index]()
-                    viewModel.navBarIndexSet(index)
+                    navActions[index]() //navigate to screen
                 }
             )
         }

@@ -14,6 +14,6 @@ class NavigationViewModel @Inject constructor() : ViewModel() {
 
     fun navBarIndexSet(index: Int) {
         if (selectedNavIndex.intValue == index) return
-        selectedNavIndex.intValue = index
+        selectedNavIndex.intValue= index
     }
 }
