@@ -17,14 +17,10 @@ fun AppNavigation(modifier: Modifier) {
 
     Box(modifier = modifier) {
         NavHost(navController = navController, startDestination = Screen.Home.route) {
-            composable(Screen.Home.route) {
-                SOSHomeScreen(navController)
-            }
-            composable(Screen.EmergencyContacts.route) {
-                EmergencyContactScreen(navController)
-            }
+            composable(Screen.Home.route) { SOSHomeScreen(navController) }
+            composable(Screen.EmergencyContacts.route) { EmergencyContactScreen(navController) }
             composable(Screen.Location.route) { LocationScreen(navController) }
-            composable(Screen.Settings.route) { SettingsScreen() }
+            composable(Screen.Settings.route) { SettingsScreen(navController) }
         }
     }
 }
