@@ -21,7 +21,7 @@ fun SettingsScreen(navController: NavController) {
     }
 
     val customTopAppBar = @Composable {
-        CustomTopAppBar(modifier = Modifier.padding(12.dp),title = title)
+        CustomTopAppBar(modifier = Modifier.padding(4.dp),title = title)
     }
 
     TitleContentNavScaffold(
