@@ -27,7 +27,7 @@ fun PreferenceCard(modifier: Modifier = Modifier, title: String, description: St
         modifier = modifier
             .height(100.dp)
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(horizontal = 16.dp, vertical = 4.dp)
     ) {
         Column(
             horizontalAlignment = Alignment.Start,
