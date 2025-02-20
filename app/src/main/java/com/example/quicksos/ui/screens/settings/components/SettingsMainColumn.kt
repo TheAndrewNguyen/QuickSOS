@@ -1,14 +1,13 @@
-package com.example.quicksos.ui.screens.settings.pages
+package com.example.quicksos.ui.screens.settings.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.quicksos.ui.screens.settings.components.PreferenceCard
 
 @Composable
-fun SettingsMainPage() {
+fun SettingsMainColumn() {
     Column(
         modifier = Modifier
         .fillMaxSize()
@@ -43,5 +42,5 @@ fun SettingsMainPage() {
 @Preview
 @Composable
 fun SettingsColumnPreview() {
-    SettingsMainPage()
+    SettingsMainColumn()
 }

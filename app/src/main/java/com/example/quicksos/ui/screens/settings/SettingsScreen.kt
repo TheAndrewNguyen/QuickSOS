@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.quicksos.ui.navigation.NavBar
-import com.example.quicksos.ui.screens.settings.pages.SettingsMainPage
+import com.example.quicksos.ui.screens.settings.components.SettingsMainColumn
 import com.example.quicksos.ui.shared.layouts.TitleContentNavScaffold
 import com.example.quicksos.ui.shared.layouts.components.CustomTopAppBar
 import com.example.quicksos.ui.shared.layouts.components.TitleTextAlign
@@ -29,7 +29,7 @@ fun SettingsScreen(navController: NavController) {
 
     TitleContentNavScaffold(
         topBar = { customTopAppBar() },
-        content = { SettingsMainPage() },
+        content = { SettingsMainColumn() },
         bottomBar = {NavBar(navController = navController)},
     )
 }
