@@ -2,10 +2,16 @@ package com.example.quicksos.ui.screens.settings.viewModel
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
+@HiltViewModel
 class SettingsViewModel : ViewModel() {
     var uiState = mutableStateOf<UiState>(UiState.MainSettings)
         private set
+
+    fun changeUiState(newState: UiState) {
+        uiState.value = newState
+    }
 }
 
 sealed class UiState {

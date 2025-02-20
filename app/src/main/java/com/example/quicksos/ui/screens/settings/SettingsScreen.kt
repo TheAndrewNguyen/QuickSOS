@@ -25,8 +25,6 @@ fun SettingsScreen(navController: NavController) {
         CustomTopAppBar(modifier = Modifier.padding(4.dp),title = title)
     }
 
-
-
     TitleContentNavScaffold(
         topBar = { customTopAppBar() },
         content = { SettingsMainColumn() },
