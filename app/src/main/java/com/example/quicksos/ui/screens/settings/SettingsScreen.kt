@@ -5,6 +5,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.quicksos.ui.screens.settings.pages.AlertContactsSettingsPage
+import com.example.quicksos.ui.screens.settings.pages.AppearanceSettingsPage
+import com.example.quicksos.ui.screens.settings.pages.HelpSettingsPage
 import com.example.quicksos.ui.screens.settings.pages.MainSettingsPage
 import com.example.quicksos.ui.screens.settings.pages.Text911SettingsPage
 import com.example.quicksos.ui.screens.settings.viewModel.SettingsViewModel
@@ -19,15 +22,19 @@ fun SettingsScreen(navController: NavController) {
         }
 
         UiState.AppearanceSettings -> {
-            //TODO: Add appearance settings
+            AppearanceSettingsPage()
         }
 
         UiState.Text911Settings -> {
             Text911SettingsPage()
         }
 
-        UiState.HelpSettings -> {
+        UiState.AlertContactsSettings -> {
+            AlertContactsSettingsPage()
+        }
 
+        UiState.HelpSettings -> {
+            HelpSettingsPage()
         }
     }
 }

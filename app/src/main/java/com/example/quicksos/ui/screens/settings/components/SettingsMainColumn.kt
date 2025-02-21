@@ -20,7 +20,10 @@ fun SettingsMainColumn() {
     ) {
         //Appearance card
         PreferenceCard(
-            modifier = Modifier,
+            modifier = Modifier
+                .clickable {
+                    viewModel.changeUiState(UiState.AppearanceSettings)
+                },
             title = "Appearance",
             description = "Customize theme and appearance settings"
         )
@@ -35,13 +38,19 @@ fun SettingsMainColumn() {
         )
         // Alert Contacts
         PreferenceCard(
-            modifier = Modifier,
+            modifier = Modifier
+                .clickable {
+                    viewModel.changeUiState(UiState.AlertContactsSettings)
+                },
             title = "Alert Contacts",
             description = "Customize Alert Cntacts Settings"
         )
         //Help and Support
         PreferenceCard(
-            modifier = Modifier,
+            modifier = Modifier
+                .clickable {
+                    viewModel.changeUiState(UiState.HelpSettings)
+                },
             title = "Help and Support",
             description = "Get help and support"
         )

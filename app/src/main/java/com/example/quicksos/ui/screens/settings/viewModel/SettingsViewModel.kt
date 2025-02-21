@@ -19,5 +19,6 @@ sealed class UiState {
     data object MainSettings : UiState()
     data object AppearanceSettings : UiState()
     data object Text911Settings : UiState()
+    data object AlertContactsSettings : UiState()
     data object HelpSettings : UiState()
 }
