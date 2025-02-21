@@ -17,7 +17,7 @@ import com.example.quicksos.ui.shared.layouts.components.TitleTextAlign
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
-fun MainPage(navController: NavController) {
+fun MainSettingsPage(navController: NavController) {
     val title = @Composable {
         TitleTextAlign("Settings", TextAlign.Start)
     }
@@ -37,6 +37,6 @@ fun MainPage(navController: NavController) {
 @Composable
 fun MainPagePreview() {
     QuickSOSTheme {
-        MainPage(navController = NavHostController(LocalContext.current))
+        MainSettingsPage(navController = NavHostController(LocalContext.current))
     }
 }

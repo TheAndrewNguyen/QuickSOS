@@ -20,7 +20,7 @@ import com.example.quicksos.ui.shared.layouts.components.TitleTextAlign
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
-fun SubSettingsTopBar(
+fun SubSettingsScaffold(
     title: String,
     content: @Composable () -> Unit = {}
 ){
@@ -58,7 +58,7 @@ fun SubSettingsTopBar(
 @Composable
 fun SubSettingsTopBarPreview() {
     QuickSOSTheme {
-        SubSettingsTopBar("Preview")
+        SubSettingsScaffold("Preview")
     }
 }
 
