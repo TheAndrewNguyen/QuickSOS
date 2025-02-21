@@ -1,13 +1,19 @@
 package com.example.quicksos.ui.screens.settings.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.quicksos.ui.screens.settings.viewModel.SettingsViewModel
+import com.example.quicksos.ui.screens.settings.viewModel.UiState
 
 @Composable
 fun SettingsMainColumn() {
+    val viewModel: SettingsViewModel = hiltViewModel()
+
     Column(
         modifier = Modifier
         .fillMaxSize()
@@ -20,7 +26,10 @@ fun SettingsMainColumn() {
         )
         // Text 911 card
         PreferenceCard(
-            modifier = Modifier,
+            modifier = Modifier
+                .clickable {
+                    viewModel.changeUiState(UiState.Text911Settings)
+                },
             title = "Text 911",
             description = "Customize text 911 settings"
         )
