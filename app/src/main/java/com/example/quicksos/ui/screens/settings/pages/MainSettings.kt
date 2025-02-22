@@ -19,7 +19,11 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 @Composable
 fun MainSettingsPage(navController: NavController) {
     val title = @Composable {
-        TitleTextAlign("Settings", TextAlign.Start)
+        TitleTextAlign(
+            title = "Settings",
+            titleAlignment = TextAlign.Start,
+            modifier = Modifier.padding(8.dp)
+        )
     }
 
     val customTopAppBar = @Composable {

@@ -15,12 +15,17 @@ import androidx.compose.ui.tooling.preview.Preview
 
 //Just text topBarTitle
 @Composable
-fun TitleTextAlign(title: String = "", titleAlignment: TextAlign = TextAlign.Center, style: TextStyle = MaterialTheme.typography.headlineLarge) {
+fun TitleTextAlign(
+    title: String = "",
+    titleAlignment: TextAlign = TextAlign.Center,
+    style: TextStyle = MaterialTheme.typography.headlineLarge,
+    modifier: Modifier = Modifier
+) {
     Text(
         text = title,
         style = style,
         textAlign = titleAlignment,
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     )
 }
 
