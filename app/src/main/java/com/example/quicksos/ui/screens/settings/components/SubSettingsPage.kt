@@ -50,15 +50,18 @@ fun SubSettingsScaffold(
 
     TitleContentNavScaffold(
         topBar = topBar,
-        content = { content },
+        content = content,
     )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun SubSettingsTopBarPreview() {
+    val content = @Composable {
+        TitleTextAlign(title = "Preview")
+    }
     QuickSOSTheme {
-        SubSettingsScaffold("Preview")
+        SubSettingsScaffold("Preview", content = content)
     }
 }
 
