@@ -94,7 +94,10 @@ fun SliderPreferenceCard(
             modifier = Modifier
                 .fillMaxSize()
         ) {
+            //title and description
             PreferenceCardText(title = title, description = description)
+
+            //toggle button
             Switch(
                 checked = viewModel.darkTheme.value,
                 onCheckedChange = { viewModel.toggleDarkTheme() },
