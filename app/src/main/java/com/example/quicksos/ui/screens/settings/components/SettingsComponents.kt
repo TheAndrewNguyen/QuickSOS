@@ -3,6 +3,7 @@ package com.example.quicksos.ui.screens.settings.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,16 +11,74 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.quicksos.ui.screens.settings.viewModel.SettingsViewModel
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
-fun PreferenceCard(modifier: Modifier = Modifier, title: String, description: String) {
+fun PreferenceCardText(
+    title: String,
+    description: String
+) {
+    Column(
+        horizontalAlignment = Alignment.Start,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .padding(start = 16.dp, top = 4.dp, bottom = 4.dp)
+    ) {
+        Text(
+            color = androidx.compose.ui.graphics.Color.Black,
+            text = title,
+            style = androidx.compose.material3.MaterialTheme.typography.bodyLarge
+        )
+        Spacer(modifier = Modifier.padding(2.dp))
+        Text(
+            color = androidx.compose.ui.graphics.Color.Black,
+            text = description,
+            style = androidx.compose.material3.MaterialTheme.typography.bodyMedium
+        )
+    }
+}
+
+
+@Composable
+fun PreferenceCard(
+    modifier: Modifier = Modifier,
+    title: String,
+    description: String) {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = androidx.compose.ui.graphics.Color.White,
+        ),
+        modifier = modifier
+            .height(80.dp)
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.Start,
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            PreferenceCardText(title = title, description = description)
+        }
+    }
+}
+
+@Composable
+fun SliderPreferenceCard(
+    title: String, description: String,
+    viewModel: SettingsViewModel = hiltViewModel(),
+    modifier: Modifier = Modifier,
+    ) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = androidx.compose.ui.graphics.Color.White,
@@ -29,23 +88,33 @@ fun PreferenceCard(modifier: Modifier = Modifier, title: String, description: St
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 4.dp)
     ) {
-        Column(
-            horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.Center,
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(vertical = 8.dp, horizontal = 16.dp)
         ) {
-            Text(
-                color = androidx.compose.ui.graphics.Color.Black,
-                text = title,
-                style = androidx.compose.material3.MaterialTheme.typography.bodyLarge
+            PreferenceCardText(title = title, description = description)
+            Switch(
+                checked = viewModel.darkTheme.value,
+                onCheckedChange = { viewModel.toggleDarkTheme() },
+                modifier = Modifier.padding(16.dp)
             )
-            Spacer(modifier = Modifier.padding(2.dp))
-            Text(
-                color = androidx.compose.ui.graphics.Color.Black,
-                text = description,
-                style = androidx.compose.material3.MaterialTheme.typography.bodyMedium
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SliderPreferenceCardPreview() {
+    QuickSOSTheme {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            SliderPreferenceCard(
+                title = "Preferences title",
+                description = "Preferences description"
             )
         }
     }

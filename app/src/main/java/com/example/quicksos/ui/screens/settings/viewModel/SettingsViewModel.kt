@@ -7,12 +7,23 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor() : ViewModel() {
+
+    //ui state tracks the current state of the settings screen
     var uiState = mutableStateOf<UiState>(UiState.MainSettings)
         private set
 
     fun changeUiState(newState: UiState) {
         uiState.value = newState
     }
+
+    //dark theme state tracks if the user has selected dark theme
+    var darkTheme = mutableStateOf(false)
+        private set
+
+    fun toggleDarkTheme() {
+        darkTheme.value = !darkTheme.value
+    }
+
 }
 
 sealed class UiState {
@@ -22,3 +33,4 @@ sealed class UiState {
     data object AlertContactsSettings : UiState()
     data object HelpSettings : UiState()
 }
+
