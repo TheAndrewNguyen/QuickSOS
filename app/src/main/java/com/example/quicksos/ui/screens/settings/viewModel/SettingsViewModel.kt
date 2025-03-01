@@ -23,7 +23,6 @@ class SettingsViewModel @Inject constructor() : ViewModel() {
     fun toggleDarkTheme() {
         darkTheme.value = !darkTheme.value
     }
-
 }
 
 sealed class UiState {

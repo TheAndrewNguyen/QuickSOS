@@ -47,7 +47,6 @@ fun PreferenceCardText(
     }
 }
 
-
 @Composable
 fun PreferenceCard(
     modifier: Modifier = Modifier,
@@ -107,6 +106,15 @@ fun SliderPreferenceCard(
     }
 }
 
+@Composable
+fun CheckBoxPreferenceCard(
+    title: String, description: String,
+    viewModel: SettingsViewModel = hiltViewModel(),
+    modifier: Modifier = Modifier,
+) {
+
+}
+
 @Preview(showBackground = true)
 @Composable
 fun SliderPreferenceCardPreview() {
@@ -122,7 +130,6 @@ fun SliderPreferenceCardPreview() {
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

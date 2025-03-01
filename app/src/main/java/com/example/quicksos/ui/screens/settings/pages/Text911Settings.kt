@@ -8,7 +8,10 @@ import com.example.quicksos.ui.theme.QuickSOSTheme
 
 @Composable
 fun Text911SettingsPage() {
-    SubSettingsScaffold(title = "Text 911 Settings")
+    val content = @Composable {
+
+    }
+    SubSettingsScaffold(title = "Text 911 Settings", content = content)
 }
 
 @Preview(showBackground = true)
