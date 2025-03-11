@@ -19,7 +19,7 @@ fun SettingsMainColumn() {
         .fillMaxSize()
     ) {
         //Appearance card
-        PreferenceCard(
+        PreferenceCardBase(
             modifier = Modifier
                 .clickable {
                     viewModel.changeUiState(UiState.AppearanceSettings)
@@ -28,7 +28,7 @@ fun SettingsMainColumn() {
             description = "Customize theme and appearance settings"
         )
         // Text 911 card
-        PreferenceCard(
+        PreferenceCardBase(
             modifier = Modifier
                 .clickable {
                     viewModel.changeUiState(UiState.Text911Settings)
@@ -37,7 +37,7 @@ fun SettingsMainColumn() {
             description = "Customize text 911 settings"
         )
         // Alert Contacts
-        PreferenceCard(
+        PreferenceCardBase(
             modifier = Modifier
                 .clickable {
                     viewModel.changeUiState(UiState.AlertContactsSettings)
@@ -46,7 +46,7 @@ fun SettingsMainColumn() {
             description = "Customize Alert Cntacts Settings"
         )
         //Help and Support
-        PreferenceCard(
+        PreferenceCardBase(
             modifier = Modifier
                 .clickable {
                     viewModel.changeUiState(UiState.HelpSettings)

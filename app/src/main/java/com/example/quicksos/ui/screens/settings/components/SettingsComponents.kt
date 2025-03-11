@@ -48,7 +48,7 @@ fun PreferenceCardText(
 }
 
 @Composable
-fun PreferenceCard(
+fun PreferenceCardBase(
     modifier: Modifier = Modifier,
     title: String,
     description: String) {
@@ -139,7 +139,7 @@ fun PreferenceCardPreview() {
             contentAlignment = Alignment.Center,
             modifier = Modifier.fillMaxSize(),
         ) {
-            PreferenceCard(title = "Preferences title", description = "Preferences description")
+            PreferenceCardBase(title = "Preferences title", description = "Preferences description")
         }
     }
 }
