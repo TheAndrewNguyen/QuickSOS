@@ -6,11 +6,10 @@ import com.example.quicksos.ui.screens.settings.components.SubSettingsScaffold
 import com.example.quicksos.ui.theme.QuickSOSTheme
 
 
+//TODO: Implement text911SettingsPage
 @Composable
 fun Text911SettingsPage() {
-    val content = @Composable {
-
-    }
+    val content = @Composable { }
     SubSettingsScaffold(title = "Text 911 Settings", content = content)
 }
 

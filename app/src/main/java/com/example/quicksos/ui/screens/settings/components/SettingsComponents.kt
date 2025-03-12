@@ -47,37 +47,14 @@ fun PreferenceCardText(
     }
 }
 
-@Composable
-fun PreferenceCardBase(
-    modifier: Modifier = Modifier,
-    title: String,
-    description: String) {
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = androidx.compose.ui.graphics.Color.White,
-        ),
-        modifier = modifier
-            .height(80.dp)
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-    ) {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.Start,
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
-            PreferenceCardText(title = title, description = description)
-        }
-    }
-}
 
 @Composable
-fun SliderPreferenceCard(
+fun PreferenceCardBase(
     title: String, description: String,
     viewModel: SettingsViewModel = hiltViewModel(),
     modifier: Modifier = Modifier,
-    ) {
+    content: @Composable (viewModel: SettingsViewModel) -> Unit = {}
+) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = androidx.compose.ui.graphics.Color.White,
@@ -97,15 +74,33 @@ fun SliderPreferenceCard(
             PreferenceCardText(title = title, description = description)
 
             //toggle button
-            Switch(
-                checked = viewModel.darkTheme.value,
-                onCheckedChange = { viewModel.toggleDarkTheme() },
-                modifier = Modifier.padding(16.dp)
-            )
+            content(viewModel)
         }
     }
 }
 
+//TODO: Refactor this to use the basePreferenceCard
+@Composable
+fun SliderPreferenceCard(
+    title: String, description: String,
+    viewModel: SettingsViewModel = hiltViewModel(),
+    modifier: Modifier = Modifier,
+    ) {
+    PreferenceCardBase(
+        title = title,
+        description = description,
+        modifier = modifier,
+        content = {
+            Switch(
+                checked = viewModel.darkTheme.value,
+                onCheckedChange = { viewModel.toggleDarkTheme() },
+                modifier = Modifier.padding(16.dp)
+           )
+        })
+}
+
+
+//TODO: implement checkbox preference card
 @Composable
 fun CheckBoxPreferenceCard(
     title: String, description: String,
@@ -113,6 +108,19 @@ fun CheckBoxPreferenceCard(
     modifier: Modifier = Modifier,
 ) {
 
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreferenceCardBasePreview() {
+    QuickSOSTheme {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            PreferenceCardBase(title = "Preferences title", description = "Preferences description")
+        }
+    }
 }
 
 @Preview(showBackground = true)
@@ -131,15 +139,3 @@ fun SliderPreferenceCardPreview() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreferenceCardPreview() {
-    QuickSOSTheme {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier.fillMaxSize(),
-        ) {
-            PreferenceCardBase(title = "Preferences title", description = "Preferences description")
-        }
-    }
-}
